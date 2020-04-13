@@ -1,0 +1,9 @@
+.single_movie{
+    width:167px;
+    height: 250px;
+    margin: 3px;
+}
+.single_movie_name{
+    color: white;
+    padding: 6px 0;
+}

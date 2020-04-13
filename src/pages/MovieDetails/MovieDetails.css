@@ -1,0 +1,78 @@
+.movieDetails_container{
+    padding-left:20px;
+    color: white;
+    background-color: #1e1e1e;
+
+}
+.geners_container{
+    display:flex;
+}
+.info_container{
+    display: flex;
+}
+.movie_title{
+    margin-bottom: 1px;
+    margin-top: 0;
+    padding-top: 12px;
+}
+.side_data_container{
+    background-color: white;
+    color: black;
+    width: 150px;
+    position: absolute;
+    right: 0;
+    /* left: 0; */
+    bottom: 0;
+    border-radius: 5px;
+    padding: 14px;
+}
+.imgs_container{
+    position: relative;
+    
+}
+.img_bg{
+    width:100%;
+    height:700px;
+    opacity:0.3
+}
+.img_card_wrapper{
+    position: absolute;
+    left: 0;
+    bottom: 0;
+}
+.img_card{
+    height:360px
+}
+.overview_txt{
+    background: transparent;
+    position: absolute;
+    width: 50%;
+    top: 20%;
+    padding-left: 20px;
+}
+.main_details{
+    background: transparent;
+    position: absolute;
+    width: 50%;
+    padding-left: 20px;
+}
+.trailers_container{
+    margin-top: 5%;
+    padding-bottom: 5%;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+.rec_container{
+    display: flex;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    padding: 3% 0;
+    margin-bottom: 3%;
+}
+@media screen and (max-width: 1200px) {
+    .img_bg{
+       
+        height:auto;
+    }
+  }
