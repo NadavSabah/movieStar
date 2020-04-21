@@ -1,35 +1,66 @@
-import React from 'react'
-import {connect} from 'react-redux'
+import React, { useState } from 'react'
+import { connect } from 'react-redux'
 import movieService from '../../services/movieService'
-import { Link } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 import './MoviePreview.css'
 
-const MoviePreview = ({ imgUrl, data,setCurrMovie }) => {
+import dots from '../../assets/imgs/3dots.svg'
+
+
+const MoviePreview = ({ imgUrl, data, setCurrMovie, recentlylist, handaleWatchList }) => {
+    const [showWindow, setShowWindow] = useState(false)
+
+    const closeNote = () => {
+        if (showWindow === true) setShowWindow(false)
+    }
+    const handleOptPicked = (e) => {
+        e.stopPropagation()
+        if (e.currentTarget.innerHTML === 'Add to watchlist') {
+            setShowWindow(!showWindow)
+            handaleWatchList(data)
+
+        }
+    }
+    const handleNoteOpen = () => {
+        setShowWindow(!showWindow)
+
+    }
     const onSetCurrMovie = () => {
-        setCurrMovie(data.id)
+        setCurrMovie(data.id, recentlylist)
 
     }
     return (
-
-        <Link to={'/' + data.id}>
-            <div onClick={onSetCurrMovie}>
-
-                <img className="single_movie" src={imgUrl} />
-                <div className='single_movie_name'>{data.title}</div>
-               
+        <div onClick={(e) => closeNote()}>
+            <div className='add_wl_btn' className onClick={(e) => handleNoteOpen(e)}><img src={dots} /></div>
+            <div className={"movie_note" + (showWindow ? "" : " movie_note_hide")}>
+                {/* <div className={classNote}> */}
+                <div onClick={handleOptPicked} className="movie_note_single">Add to watchlist</div>
+                <div className="movie_note_single">Movie details</div>
             </div>
-        </Link>
-
+            <NavLink className="mp_link" to={'/' + data.id}>
+                <div className='movie_card' onClick={onSetCurrMovie}>
+                    <img className="movie_img" src={imgUrl} />
+                    <div className='movie_name'>{data.title}</div>
+                </div>
+            </NavLink>
+        </div>
 
     )
+}
+const mapStateToProps = state => {
+    return {
+        showNote: state.showNote
+    }
 }
 const mapDispatchToProps = dispatch => {
     return {
 
-        setCurrMovie: async (movieId) => {
+        setCurrMovie: async (movieId, recentlylist) => {
             let res = await movieService.getCurrMovieData(movieId)
-            dispatch({type:'SET_CURR_MOVIE',data:res})
-        }
+            dispatch({ type: 'SET_CURR_MOVIE', data: res })
+            const updatedList = await movieService.addToRecentlyList(res, recentlylist)
+            dispatch({ type: 'ADD_TO_RECENTLY_VIEWED', data: updatedList })
+        },
     }
 }
-export default connect(null, mapDispatchToProps)(MoviePreview)
+export default connect(mapStateToProps, mapDispatchToProps)(MoviePreview)

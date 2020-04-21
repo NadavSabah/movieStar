@@ -1,9 +1,62 @@
-.single_movie{
-    width:167px;
+.movie_img {
+    width: 167px;
     height: 250px;
     margin: 3px;
+    border-radius: 7px;
 }
-.single_movie_name{
+
+.movie_name {
     color: white;
     padding: 6px 0;
+    width: 160px;
+}
+
+.movie_card:hover {
+    opacity: 0.85;
+}
+
+.mp_link {
+    /* opacity: 0.9; */
+    text-decoration: none;
+}
+
+.movie_note {
+    background: white;
+    color: black;
+    height: FIT-CONTENT;
+    width: 125px;
+    position: absolute;
+    line-height: 22px;
+    margin-top: 5px;
+    text-align: center;
+    border-radius: 5px;
+    z-index: 1;
+    left: 19px;
+    top: 17px;
+}
+
+.movie_note_hide {
+    visibility: hidden;
+}
+
+.movie_note_single {
+    border-bottom: 1px solid lightgray;
+    padding: 5px;
+}
+
+.movie_note_single:hover {
+    background-color: #f5c518;
+    color: white;
+    border-radius: 5px;
+}
+
+@media screen and (max-width: 600px) {
+    .movie_card {
+        width: 131px;
+    }
+    .movie_img {
+        width: 133px;
+        height: 200px;
+        margin: 0;
+    }
 }

@@ -1,0 +1,29 @@
+.movies_container {
+    display: flex;
+    overflow-x: auto;
+    overflow-y: hidden;
+    padding: 20px 0;
+}
+
+.movie_item {
+    margin: 5px;
+    cursor: pointer;
+    position: relative;
+}
+
+.add_wl_btn {
+    background: transparent;
+    border: none;
+}
+
+.img_add_wl {
+    position: relative;
+    top: 44px;
+}
+
+@media screen and (max-width: 600px) {
+    .movies_container {
+        height: 315px;
+        padding: 0 10px;
+    }
+}

@@ -5,24 +5,53 @@ export default {
     getPopularList,
     getUpcomingList,
     getCurrMovieData,
-    getRecommendations
+    addToWatchList,
+    DeleteFromWatchList,
+    loadWatchList,
+    addToRecentlyList,
+    loadRecentlyList
+
 }
 const API = '5c90c388a02f4e1f5527d7ab55af038f'
 
-async function getInputResults(userInput) {
-    let res = await axios.get(`https://api.themoviedb.org/3/search/movie?api_key=${API}&query=${userInput}`)
-    console.log('this is res', res)
-    return res.data.results
+async function getInputResults(userInput = null) {
+    let res;
+    if (!userInput) {
+        console.log('in the if !userInput')
+        res = localStorage.getItem('inputResults')
+        res = JSON.parse(res)
+    }
+    else {
+        res = await axios.get(`https://api.themoviedb.org/3/search/movie?api_key=${API}&query=${userInput}`)
+        res = res.data.results
+        res.push({ userInput: userInput })
+        localStorage.setItem('inputResults', JSON.stringify(res))
+    }
+
+    return res
 
 }
 async function getHttpReqConfig() {
-    let res = await axios.get(`https://api.themoviedb.org/3/configuration?api_key=${API}`)
-    console.log('res.data.images.poster_sizes',res.data.images.poster_sizes)
-    console.log('res.data.images.poster_sizes',res.data.images.poster_sizes[5])
-    let displaySizeCard = res.data.images.poster_sizes[2]
-    let displaySizeBg = res.data.images.poster_sizes[6]
-    let baseUrl = res.data.images.secure_base_url
-    return { displaySizeCard,displaySizeBg, baseUrl }
+    let baseUrl;
+    let displaySizeCard;
+    let displaySizeBg;
+    let displaySizeWlBg;
+    if (localStorage.getItem('generalConfig') === null) {
+        let res = await axios.get(`https://api.themoviedb.org/3/configuration?api_key=${API}`)
+        console.log('getHttpReqConfig function:', res)
+        displaySizeCard = res.data.images.poster_sizes[2]
+        displaySizeBg = res.data.images.poster_sizes[6]
+        displaySizeWlBg = res.data.images.poster_sizes[5]
+        baseUrl = res.data.images.secure_base_url
+        localStorage.setItem('generalConfig', JSON.stringify({ displaySizeCard, displaySizeBg, displaySizeWlBg, baseUrl }))
+        return { displaySizeCard, displaySizeBg, baseUrl, displaySizeWlBg }
+    }
+    else {
+        let generalConfig = localStorage.getItem('generalConfig')
+        generalConfig = JSON.parse(generalConfig)
+        return generalConfig
+
+    }
 }
 
 async function getPopularList() {
@@ -50,20 +79,97 @@ async function getUpcomingList() {
         return res
     }
 }
+// https://api.themoviedb.org/3/movie/419704/credits?api_key=5c90c388a02f4e1f5527d7ab55af038f
+
 
 async function getCurrMovieData(movieId) {
-    let res = await axios.get(`https://api.themoviedb.org/3/movie/${movieId}?api_key=${API}&language=en-US`)
-    let trailers = await axios.get(`https://api.themoviedb.org/3/movie/${movieId}/videos?api_key=${API}&language=en-US`)
-    res.data.trailers = trailers.data.results
+    let res = await axios.get(`https://api.themoviedb.org/3/movie/${movieId}?api_key=${API}&language=en-US&append_to_response=videos,recommendations,credits`)
+    console.log('res is (with append to response, did you see also recommendations?', res.data)
     localStorage.setItem('currMovie', JSON.stringify(res.data))
 
     return res.data
 }
 
-async function getRecommendations(movieId){
-let res = await axios.get(`https://api.themoviedb.org/3/movie/${movieId}/recommendations?api_key=${API}&language=en-US&page=1`)
-return res.data.results
+
+
+function addToWatchList(movie, watchList) {
+    watchList.push(movie)
+    localStorage.setItem('watchList', JSON.stringify(watchList))
+    return watchList
 }
+function DeleteFromWatchList(index, watchList) {
+    watchList.splice(index, 1)
+    localStorage.setItem('watchList', JSON.stringify(watchList))
+    return watchList
+}
+
+function loadWatchList() {
+    if (localStorage.getItem('watchList') === null)
+        return false
+    else {
+        let watchList = localStorage.getItem('watchList')
+        watchList = JSON.parse(watchList)
+        return watchList
+    }
+}
+
+async function addToRecentlyList(movie, recentlyList) {
+    if (movie) {
+
+        const idx = recentlyList.findIndex(element => {
+            return element.id === movie.id
+        })
+        if (idx !== -1) {
+            recentlyList.splice(idx, 1)
+            recentlyList.unshift(movie)
+        }
+        else recentlyList.unshift(movie)
+    }
+    if (recentlyList.length >= 20) recentlyList.splice(-1, 1)
+    localStorage.setItem('recentlyList', JSON.stringify(recentlyList))
+    return recentlyList
+}
+function loadRecentlyList() {
+    if (localStorage.getItem('recentlyList') === null) return false
+    else {
+        let recentlyList = localStorage.getItem('recentlyList')
+        recentlyList = JSON.parse(recentlyList)
+        return recentlyList
+    }
+
+}
+
+// async function getRecommendations(movieId) {
+//     let res = await axios.get(`https://api.themoviedb.org/3/movie/${movieId}/recommendations?api_key=${API}&language=en-US&page=1`)
+//     return res.data.results
+// }
+// async function getGenresList() {
+//     let res;
+//     console.log('in the getGenresList function')
+//     if (localStorage.getItem('genresList') === null) {
+//         res = await axios.get(`https://api.themoviedb.org/3/genre/movie/list?api_key=${API}&language=en-US`)
+//         localStorage.setItem('genresList', JSON.stringify(res.data.genres))
+//         return res.data.genres
+//     }
+//     else {
+//         res = localStorage.getItem('genresList')
+//         res = JSON.parse(res)
+//         return res
+
+//     }
+// }
+
+// async function getGenresByName(genresIds) {
+//     let genresToRender = [];
+//     const allGenres = await getGenresList()
+//     console.log('allGenres',allGenres)
+//     genresIds.forEach(id => {
+//         let genreToRender = allGenres.find(genre => genre.id === id)
+//         console.log('genreToRender',genreToRender)
+//         if (genreToRender) genresToRender.push(genreToRender)
+//     })
+//     return genresToRender
+// }
 // function getInputResults(userInput){
     //     fetch(searchUrl(userInput))
     //     .then(res => res.json())
@@ -84,3 +190,4 @@ return res.data.results
             //         .then(res => res.json())
             //         .then(data => setUpcomingImgs(data.results))
             // }
+

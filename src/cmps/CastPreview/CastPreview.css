@@ -1,0 +1,45 @@
+.actor_wrapper{
+    margin: 5px;
+    border-radius: 8PX;
+    background: #ffffff;
+    height: 248px;
+    max-width: 120px;
+    color: black;
+    text-align: left;
+}
+.actor_img{
+    border-radius: 7PX 7px 0 0 ;
+    height: 180px;
+    width: 120px;
+}
+.actor_name{
+    margin: 2px;
+    font-weight: bold;
+}
+.actor_char{
+    margin: 2px;
+    font-size: 0.85em;
+    width: 96%;
+    color: black;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    text-overflow: ellipsis;
+    overflow: hidden;
+
+} 
+.actor_txt_wrapper{
+    padding-left: 3px;
+}
+
+@media screen and (max-width: 700px) {
+.actor_img{
+    height:150px;
+    width:100px;
+    }
+    .actor_char{
+        overflow: hidden;
+        text-overflow: ellipsis;
+        max-height: 45px;
+    }
+}

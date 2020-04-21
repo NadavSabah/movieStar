@@ -1,0 +1,124 @@
+.total_container{
+    position: absolute;
+
+}
+.wl_container{
+    background-color: white;
+    position: relative;
+    margin: 65px auto;
+    width: 90%;
+    height: 200px;
+    border-radius: 10px;
+   
+}
+.mp_wl_link{
+    text-decoration: none;
+}
+
+.wl_content{
+    margin-left: 200px;
+}
+.wl_movie_img{
+    width: 135px;
+    height: 200px;
+    border-radius: 8px 0 0 8px;
+    position: absolute;
+    bottom: 0;
+}
+
+.wl_title{
+    margin: 0;
+    color:black;
+    padding-top: 15px;
+}
+.wl_date{
+    color: darkgrey;
+    font-style: italic;
+    margin-bottom: 10px;
+}
+.wl_overview{
+    width: 96%;
+    color: black;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+.wl_rate{
+    height: 40px;
+    width: 40px;
+    border: 1px solid;
+    border-radius: 20px;
+    text-align: center;
+    vertical-align: middle;
+    background-color: #ffe482;
+    font-weight: bold;
+    line-height: 2.2em;
+    font-size: 1.2em;
+    color: black;
+    position: absolute;
+    right: 5px;
+    top: 5px;
+}
+.wl_remove{
+    height: 35px;
+    width: 35px;
+    position: absolute;
+    bottom: 7px;
+    left: 200px;
+}
+.wl_fremove{
+    height: 35px;
+    width: 35px;
+    position: absolute;
+    bottom: 7px;
+    left: 200px;
+  }
+.romove_container{
+    height: 40px;
+    width:40px;
+}
+.romove_container img:last-child {
+    display: none;  
+}
+  .romove_container:hover img:last-child {
+    display: block;  
+}
+.romove_container:hover img:first-child {
+    display: none;
+}
+@media screen and (max-width: 700px) {
+.wl_container{
+    font-size: 0.9em;
+}
+.wl_rate {
+    height: 30px;
+    width: 30px;
+    bottom:7px;
+    top: auto;
+    font-size: 1em;
+    right: 7px;
+}
+.wl_remove{
+    height:30px;
+    width:30px;
+    left: 106px;
+}
+.wl_fremove{
+    height:30px;
+    width:30px;
+    left: 106px;
+}
+.wl_movie_img{
+    width:100px;
+}
+.wl_content{
+    margin-left: 104px;
+}
+.wl_overview{
+    -webkit-line-clamp: 4;
+}
+}
+
+  

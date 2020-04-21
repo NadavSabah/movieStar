@@ -2,27 +2,34 @@ import React, { useState, useEffect } from 'react'
 import { connect } from 'react-redux'
 import './HomePage.css';
 import UserInput from '../../cmps/UserInput/UserInput'
-import MoviePreview from '../../cmps/MoviePreview/MoviePreview'
+import MovieList from '../../cmps/MovieList/MovieList'
 import movieService from '../../services/movieService';
+import addThis from '../../cmps/addthis/adddthis'
 
 const API = '5c90c388a02f4e1f5527d7ab55af038f'
 
-const HomePage = ({ inputResults, setConfigForFetch, setPopularList, popularList, setUpcomingList, upcomingList, baseUrl, displaySizeCard }) => {
+const HomePage = ({ inputResults, setConfigForFetch, setPopularList, popularList, setUpcomingList,
+    upcomingList, recentlyViewed, loadRecentlyList, getLastSearch }) => {
     const [userInput, setUserInput] = useState('')
-
-    //fetch more details about a movie
-    const detailsUrl = id => `https://api.themoviedb.org/3/search/movie/${id}?api_key=${API}`
 
     useEffect(
         () => {
             async function getData() {
+                addThis.start()
                 await setConfigForFetch()
                 await setPopularList()
                 await setUpcomingList()
+                await getLastSearch()
+
+                if (!recentlyViewed.length) loadRecentlyList()
+                setTimeout(() => {
+
+                }, 3000)
             }
             getData()
         }
         , [])
+
 
     const inputResult = (value) => {
         setUserInput(value)
@@ -30,55 +37,52 @@ const HomePage = ({ inputResults, setConfigForFetch, setPopularList, popularList
 
     return (
         <div>
+
             <UserInput inputResult={inputResult} />
-            <h1 className="sub_title">Popular Movies</h1>
-            <div className="movies_container">
-                {popularList
-                    ? popularList.map((movieData, idx) =>
-                        <div key={idx} className="movie_item">
-                            {movieData.poster_path ?
+            {inputResults ?
+                <div className="search_result_wrapper">
 
-                                <MoviePreview imgUrl={`${baseUrl}${displaySizeCard}${movieData.poster_path}`} data={movieData} />
-                                : null
-                            }
-                        </div>
-                    )
-                    : null
-                }
-            </div>
-            {userInput ?
-                <div>
+                    <h1 className="sub_title">Search Results {userInput ? 'for ' + userInput : ''}</h1>
 
-                    <h1 className="sub_title">Search Results for {userInput}</h1>
-                    <div className="movies_container">
-                        {inputResults
-                            ? inputResults.map((movieData, idx) =>
-                                <div key={idx} className="movie_item">
-                                    {movieData.poster_path ?
-                                        <MoviePreview imgUrl={`${baseUrl}${displaySizeCard}${movieData.poster_path}`} data={movieData} />
-                                        : null
-                                    }
-                                </div>
-                            )
-                            : <div className="loader" />
-                        }
-                    </div>
+
+                    {inputResults ?
+                        <MovieList list={inputResults} />
+                        : null
+                    }
+
                 </div>
                 : null
             }
-            <h1 className="sub_title">Coming soon...</h1>
-            <div className="movies_container">
-                {upcomingList
-                    ? upcomingList.map((movieData, idx) =>
-                        <div key={idx} className="movie_item">
-                            {movieData.poster_path ?
-                                <MoviePreview imgUrl={`${baseUrl}${displaySizeCard}${movieData.poster_path}`} data={movieData} />
-                                : null
-                            }
-                        </div>
-                    )
-                    : <div className="loader" />
+
+            <h1 className="sub_title">Popular Movies</h1>
+            {popularList ?
+                <MovieList list={popularList} />
+                : null
+            }
+            <div className="light">
+
+                <h1 className="sub_title">Coming soon...</h1>
+                {upcomingList ?
+                    <MovieList list={upcomingList} />
+                    : null
                 }
+            </div>
+            <h1 className="sub_title">Recently Viewed</h1>
+            {recentlyViewed ?
+                <MovieList list={recentlyViewed} />
+                : null
+            }
+
+            {/* brightBackground */}
+
+            {/* <div className="addthis_inline_share_toolbox_d9cr"></div> */}
+
+            {/* darkBackground */}
+
+            <h1 className="share_title">MovieStar app</h1>
+            {/* <div className="add-this"></div> */}
+            <div className="share_wrapper">
+                <div className="addthis_inline_share_toolbox"></div>
             </div>
 
         </div>
@@ -91,11 +95,17 @@ const mapStateToProps = state => {
         displaySizeCard: state.displaySizeCard,
         baseUrl: state.baseUrl,
         popularList: state.popularList,
-        upcomingList: state.upcomingList
+        upcomingList: state.upcomingList,
+        watchList: state.watchList,
+        recentlyViewed: state.recentlyViewed
     }
 }
 const mapDIspatchToProps = dispatch => {
     return {
+        getLastSearch: async () => {
+            const inputResults = await movieService.getInputResults()
+            dispatch({ type: 'SET_INPUT_RESULTS', data: inputResults })
+        },
         setConfigForFetch: async () => {
             const httpsConfig = await movieService.getHttpReqConfig()
             dispatch({ type: 'SET_HTTP_REQ_CONFIG', data: httpsConfig })
@@ -107,7 +117,21 @@ const mapDIspatchToProps = dispatch => {
         setUpcomingList: async () => {
             const upcomingList = await movieService.getUpcomingList()
             dispatch({ type: 'SET_UPCOMING_LIST', data: upcomingList })
-        }
+        },
+        loadRecentlyList: async () => {
+            let recentlyList = await movieService.loadRecentlyList()
+            if (recentlyList) {
+                // let watchList = movieService.loadWatchList(watchList)
+                dispatch({ type: 'LOAD_RECENTLY_VIEWED', data: recentlyList })
+
+            }
+            else return
+        },
+
+
     }
 }
+
+
 export default connect(mapStateToProps, mapDIspatchToProps)(HomePage)
+
