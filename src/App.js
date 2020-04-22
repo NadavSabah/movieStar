@@ -27,7 +27,7 @@ function App({ msg }) {
 
           <ul className="main_nav_items">
             <li className="main_nav_item">
-              <NavLink className="item_name" to="/">Home</NavLink>
+              <NavLink className="item_name" exact to="/">Home</NavLink>
             </li>
             <li className="main_nav_item">
               <NavLink className="item_name" to="/WatchList">WatchList</NavLink>

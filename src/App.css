@@ -103,8 +103,9 @@ h1 {
   color:white;
 } */
 
-.item_name:active,
-.item_name:hover {
+.main_nav_item a:hover,
+.main_nav_item a:active,
+.main_nav_item a.active {
     color: white;
 }
 
