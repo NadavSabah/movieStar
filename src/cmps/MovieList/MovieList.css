@@ -23,7 +23,8 @@
 
 @media screen and (max-width: 600px) {
     .movies_container {
-        height: 315px;
+        height: 330px;
         padding: 0 10px;
     }
+    
 }

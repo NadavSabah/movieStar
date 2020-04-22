@@ -4,7 +4,7 @@ import './MovieList.css'
 import movieService from '../../services/movieService'
 import MoviePreview from '../MoviePreview/MoviePreview'
 
-const MovieList = ({ list, baseUrl, displaySizeCard, watchList, setAddWatchList, setDeleteWatchList, recentlyViewed, setIsSucMsg }) => {
+const MovieList = ({ list, title, baseUrl, displaySizeCard, watchList, setAddWatchList, setDeleteWatchList, recentlyViewed, setIsSucMsg }) => {
 
     // remove and add to wathlist
     const handaleWatchList = (movie) => {
@@ -30,7 +30,8 @@ const MovieList = ({ list, baseUrl, displaySizeCard, watchList, setAddWatchList,
         }
     }
 
-    return (
+    return (<div className>
+        <h1 className="sub_title">{title}</h1>
         < div className='movies_container' >
             {
                 list ?
@@ -47,6 +48,7 @@ const MovieList = ({ list, baseUrl, displaySizeCard, watchList, setAddWatchList,
                     : null
             }
         </div >
+    </div>
     )
 }
 const mapStateToProps = state => {

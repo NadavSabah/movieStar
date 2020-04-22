@@ -54,22 +54,22 @@ const HomePage = ({ inputResults, setConfigForFetch, setPopularList, popularList
                 : null
             }
 
-            <h1 className="sub_title">Popular Movies</h1>
+
             {popularList ?
-                <MovieList list={popularList} />
+                <MovieList list={popularList} title={'Popular Movies'} />
                 : null
             }
             <div className="light">
 
-                <h1 className="sub_title">Coming soon...</h1>
+
                 {upcomingList ?
-                    <MovieList list={upcomingList} />
+                    <MovieList list={upcomingList} title={'Coming soon...'} />
                     : null
                 }
             </div>
-            <h1 className="sub_title">Recently Viewed</h1>
+            <h1 className="sub_title"></h1>
             {recentlyViewed ?
-                <MovieList list={recentlyViewed} />
+                <MovieList list={recentlyViewed} title={'Recently Viewed'} />
                 : null
             }
 

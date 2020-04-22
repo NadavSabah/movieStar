@@ -51,6 +51,15 @@
 }
 
 @media screen and (max-width: 600px) {
+    .movie_name {
+        width: 95%;
+        padding-bottom: 0;
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        }
     .movie_card {
         width: 131px;
     }
