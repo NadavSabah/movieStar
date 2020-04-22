@@ -45,6 +45,10 @@
 .search_result_wrapper{
     background-color: #7a7a7a;
 }
+.rv_no_history{
+    padding-left: 13px;
+    text-align: center;
+}
 
 @keyframes spin {
     0% {

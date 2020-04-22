@@ -15,11 +15,11 @@ const MovieDetails = ({ history, movie, baseUrl, displaySizeBg, displaySizeCard,
                 await setCurrMovie(movie, history, recentlyViewed)
             }
             if (!movie) {
-                console.log('in the if didmount')
                 getData()
-
             }
         }, 3000)
+        // let topPage = document.getElementsByClassName('.movie_title').focus()
+
 
     }, [])
 
