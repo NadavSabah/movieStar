@@ -87,7 +87,7 @@ const MovieList = ({ list, title, baseUrl, displaySizeCard, watchList, setAddWat
 
                                             <div onClick={(e) => { handleOptPicked(e, movieData) }} className="movie_note_single">Add to watchlist</div>
                                             {/* <div className="movie_note_single">Add to watchlist</div> */}
-                                            <NavLink className="mp_link" to={'/' + movieData.id}>
+                                            <NavLink to={'/' + movieData.id}>
                                                 <div className="movie_note_single">Movie details</div>
                                             </NavLink>
                                         </div>

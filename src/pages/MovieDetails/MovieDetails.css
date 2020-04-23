@@ -2,6 +2,9 @@
     color: white;
     background-color: #1e1e1e;
 }
+.img_bg_wrapper{
+    margin-top: 60px;
+}
 
 .geners_container {
     display: flex;
