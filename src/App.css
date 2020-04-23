@@ -66,15 +66,22 @@ h1 {
     background: #555;
 }
 
-.main_nav_container {
+#navbar {
     width: 100%;
-    display: flex;
     background: #f5c518;
-    ;
     padding: 8px 16px;
-    /* background-color: #FFFFFF;
-  background-image: linear-gradient(79deg, #FFFFFF 0%, #f5c518 99%); */
+    display: block;
+    z-index: 1;
+  transition: top 0.3s;
+  position: fixed;
+  top:0;    
 }
+#navbar a {
+    float: left;
+    display: block;
+    text-decoration: none;
+    font-size: 17px;
+  }
 
 .logo_app {
     width: 40px;
@@ -90,6 +97,9 @@ h1 {
     width: 100%;
     /* width:calc(100%-75px); */
     text-align: right;
+    position: fixed;
+    top: 0;
+    transition: top 0.3s;
 }
 
 .main_nav_item {
@@ -113,14 +123,18 @@ h1 {
     margin: 0;
     padding: 0;
     list-style: none;
-    transform: translate(0%, 50%);
+    position: absolute;
+    /* transform: translate(0%, 50%); */
 }
 
 .item_name {
     text-decoration: none;
     color: #1e1e1e;
     font-weight: bold;
-    padding: 3px 0;
+    padding: 15px 3px;
+}
+.item_about{
+    padding-right: 20px;
 }
 
 @media screen and (max-width: 600px) {

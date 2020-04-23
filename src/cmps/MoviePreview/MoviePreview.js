@@ -7,36 +7,18 @@ import './MoviePreview.css'
 import dots from '../../assets/imgs/3dots.svg'
 
 
-const MoviePreview = ({ imgUrl, data, setCurrMovie, recentlylist, handaleWatchList }) => {
-    const [showWindow, setShowWindow] = useState(false)
+const MoviePreview = ({ imgUrl, data, setCurrMovie, recentlylist, handaleWatchList, handleNoteOpen }) => {
 
-    const closeNote = () => {
-        if (showWindow === true) setShowWindow(false)
-    }
-    const handleOptPicked = (e) => {
-        e.stopPropagation()
-        if (e.currentTarget.innerHTML === 'Add to watchlist') {
-            setShowWindow(!showWindow)
-            handaleWatchList(data)
-
-        }
-    }
-    const handleNoteOpen = () => {
-        setShowWindow(!showWindow)
-
-    }
     const onSetCurrMovie = () => {
         setCurrMovie(data.id, recentlylist)
 
     }
     return (
-        <div onClick={(e) => closeNote()}>
-            <div className='add_wl_btn' className onClick={(e) => handleNoteOpen(e)}><img src={dots} /></div>
-            <div className={"movie_note" + (showWindow ? "" : " movie_note_hide")}>
-                {/* <div className={classNote}> */}
-                <div onClick={handleOptPicked} className="movie_note_single">Add to watchlist</div>
-                <div className="movie_note_single">Movie details</div>
+        <div >
+            <div className='add_wl_btn' onClick={(e) => handleNoteOpen(e, data)}>
+                <img src={dots} />
             </div>
+
             <NavLink className="mp_link" to={'/' + data.id}>
                 <div className='movie_card' onClick={onSetCurrMovie}>
                     <img className="movie_img" src={imgUrl} />

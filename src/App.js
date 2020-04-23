@@ -13,19 +13,25 @@ import { connect } from 'react-redux'
 
 
 function App({ msg }) {
+  let prevScrollpos = window.pageYOffset;
+  window.onscroll = function () {
+    let currentScrollPos = window.pageYOffset;
+    if (prevScrollpos > currentScrollPos) {
+      document.getElementById("navbar").style.top = "0";
+    } else {
+      document.getElementById("navbar").style.top = "-60px";
 
+    }
+    prevScrollpos = currentScrollPos;
+  }
   return (
 
 
     <Router >
 
-      <header className="main_nav_container">
-        <div className="logo_app"><img className="logo_img" src={icon} /></div>
-
-
-        <nav className="main_nav">
-
-          <ul className="main_nav_items">
+      <header id="navbar" className="main_nav_container">
+        <div className="logo_app"><img className="logo_img" src={icon} />
+          <ul className="main_nav_items main_nav" >
             <li className="main_nav_item">
               <NavLink className="item_name" exact to="/">Home</NavLink>
             </li>
@@ -33,10 +39,15 @@ function App({ msg }) {
               <NavLink className="item_name" to="/WatchList">WatchList</NavLink>
             </li>
             <li className="main_nav_item">
-              <NavLink className="item_name" to="/AboutUs">AboutUs</NavLink>
+              <NavLink className="item_name item_about" to="/AboutUs">AboutUs</NavLink>
             </li>
           </ul>
-        </nav>
+        </div>
+
+
+        {/* <nav className="main_nav"> */}
+
+        {/* </nav> */}
 
       </header>
       {msg.isShow ?

@@ -19,8 +19,7 @@ const MovieDetails = ({ history, movie, baseUrl, displaySizeBg, displaySizeCard,
             }
         }, 3000)
         // let topPage = document.getElementsByClassName('.movie_title').focus()
-
-
+        window.scrollTo(0, 0);
     }, [])
 
 

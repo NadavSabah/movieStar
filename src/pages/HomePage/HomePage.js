@@ -41,20 +41,13 @@ const HomePage = ({ inputResults, setConfigForFetch, setPopularList, popularList
             <UserInput inputResult={inputResult} />
             {inputResults ?
                 <div className="search_result_wrapper">
-
-                    <h1 className="sub_title">Search Results {userInput ? 'for ' + userInput : ''}</h1>
-
-
                     {inputResults ?
-                        <MovieList list={inputResults} />
+                        <MovieList title={'Search result'} list={inputResults} />
                         : null
                     }
-
                 </div>
                 : null
             }
-
-
             {popularList ?
                 <MovieList list={popularList} title={'Popular Movies'} />
                 : null

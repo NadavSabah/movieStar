@@ -1,10 +1,46 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import { connect } from 'react-redux'
+import { NavLink } from 'react-router-dom'
 import './MovieList.css'
 import movieService from '../../services/movieService'
 import MoviePreview from '../MoviePreview/MoviePreview'
 
 const MovieList = ({ list, title, baseUrl, displaySizeCard, watchList, setAddWatchList, setDeleteWatchList, recentlyViewed, setIsSucMsg }) => {
+    const [showWindow, setShowWindow] = useState(false)
+    const [noteId, setNoteId] = useState(null)
+
+    const closeNote = () => {
+        console.log('closing')
+        if (showWindow === true) setShowWindow(false)
+    }
+    const handleOptPicked = (e, movie) => {
+        console.log('e.currentTarget.innerHTM', e.currentTarget.innerHTML)
+        e.stopPropagation()
+        if (e.currentTarget.innerHTML === 'Add to watchlist') {
+            setShowWindow(!showWindow)
+            handaleWatchList(movie)
+        }
+
+    }
+
+    const handleNoteOpen = (e, { id }) => {
+
+        console.log('the id is ', id)
+        if (noteId) {
+            if (id !== noteId) {
+                console.log('in the if')
+                setTimeout(() => {
+
+                    setShowWindow(true)
+                }, 0)
+
+            }
+        }
+        setNoteId(id)
+
+        setShowWindow(!showWindow)
+
+    }
 
     // remove and add to wathlist
     const handaleWatchList = (movie) => {
@@ -30,17 +66,35 @@ const MovieList = ({ list, title, baseUrl, displaySizeCard, watchList, setAddWat
         }
     }
 
-    return (<div className>
-        <h1 className="sub_title">{title}</h1>
+    return (<div onClick={closeNote} className="list_container">
+        {title ?
+            <h1 className="sub_title">{title}</h1>
+            : null
+        }
         < div className='movies_container' >
+            <div>
+
+            </div>
             {
                 list ?
                     list.map((movieData, idx) =>
                         <div key={idx} className='movie_item'>
 
                             {movieData.poster_path ?
+                                <div>
+                                    {noteId === movieData.id ?
+                                        <div className={"movie_note" + (showWindow ? "" : " movie_note_hide")}>
 
-                                <MoviePreview handaleWatchList={handaleWatchList} imgUrl={`${baseUrl}${displaySizeCard}${movieData.poster_path}`} data={movieData} recentlylist={recentlyViewed} />
+                                            <div onClick={(e) => { handleOptPicked(e, movieData) }} className="movie_note_single">Add to watchlist</div>
+                                            {/* <div className="movie_note_single">Add to watchlist</div> */}
+                                            <NavLink className="mp_link" to={'/' + movieData.id}>
+                                                <div className="movie_note_single">Movie details</div>
+                                            </NavLink>
+                                        </div>
+                                        : null
+                                    }
+                                    <MoviePreview handleNoteOpen={handleNoteOpen} handaleWatchList={handaleWatchList} imgUrl={`${baseUrl}${displaySizeCard}${movieData.poster_path}`} data={movieData} recentlylist={recentlyViewed} />
+                                </div>
                                 : null
                             }
                         </div>
@@ -48,7 +102,7 @@ const MovieList = ({ list, title, baseUrl, displaySizeCard, watchList, setAddWat
                     : null
             }
         </div >
-    </div>
+    </div >
     )
 }
 const mapStateToProps = state => {
