@@ -86,7 +86,6 @@ const MovieList = ({ list, title, baseUrl, displaySizeCard, watchList, setAddWat
                                         <div className={"movie_note" + (showWindow ? "" : " movie_note_hide")}>
 
                                             <div onClick={(e) => { handleOptPicked(e, movieData) }} className="movie_note_single">Add to watchlist</div>
-                                            {/* <div className="movie_note_single">Add to watchlist</div> */}
                                             <NavLink to={'/' + movieData.id}>
                                                 <div className="movie_note_single">Movie details</div>
                                             </NavLink>

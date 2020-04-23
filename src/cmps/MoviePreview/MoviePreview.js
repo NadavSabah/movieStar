@@ -7,7 +7,7 @@ import './MoviePreview.css'
 import dots from '../../assets/imgs/3dots.svg'
 
 
-const MoviePreview = ({ imgUrl, data, setCurrMovie, recentlylist, handaleWatchList, handleNoteOpen }) => {
+const MoviePreview = ({ imgUrl, data, setCurrMovie, recentlylist, handleNoteOpen }) => {
 
     const onSetCurrMovie = () => {
         setCurrMovie(data.id, recentlylist)

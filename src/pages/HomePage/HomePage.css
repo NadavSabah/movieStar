@@ -3,12 +3,13 @@
     padding: 30px;
 }
 
-.light {
+/* .light {
     background-color: #7a7a7a;
-}
+} */
 
 .loader {
-    margin: 20px auto;
+    
+    margin: 80px auto;
     border: 16px solid #f3f3f3;
     border-radius: 50%;
     border-top: 16px solid black;
