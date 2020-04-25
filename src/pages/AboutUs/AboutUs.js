@@ -5,7 +5,7 @@ import './AboutUs.css'
 const AboutUs = () => {
     return (
         <div className="aboutus_container">
-            <h1 className="about_title">AboutUs</h1>
+            <h1 className="about_title">About MovieStar</h1>
             <div className="aboutus_content">Lorem ipsum dolor sit amet, consectetur adipiscing elit,
             sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
             Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.

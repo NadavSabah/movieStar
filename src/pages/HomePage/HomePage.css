@@ -50,7 +50,9 @@
     padding-left: 13px;
     text-align: center;
 }
-
+.come_so_wrapper{
+    background-color: #7a7a7a;;
+}
 @keyframes spin {
     0% {
         transform: rotate(0deg);

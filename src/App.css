@@ -9,6 +9,9 @@ background-image: linear-gradient(0deg, #FFFFFF 0%, #1e1e1e 46%); */
 background-image: linear-gradient(335deg, #FFFFFF 0%, #000000 78%); */
     color: white;
 }
+a{
+    text-decoration: none;
+}
 
 h1 {
     margin: 0
@@ -79,8 +82,9 @@ h1 {
 #navbar a {
     float: left;
     display: block;
-    text-decoration: none;
     font-size: 17px;
+    width: 100%;
+    text-align: left;
   }
 
 .logo_app {
@@ -124,7 +128,12 @@ h1 {
     padding: 0;
     list-style: none;
     position: absolute;
+    display: block;
     /* transform: translate(0%, 50%); */
+}
+.menu{
+    display: none;
+
 }
 
 .item_name {
@@ -136,16 +145,59 @@ h1 {
 .item_about{
     padding-right: 20px;
 }
+.arr_img{
+    display: none;
+}
 
 @media screen and (max-width: 600px) {
+   
+    #navbar a {
+        display: flex;
+        justify-content:space-between;
+    }
+    .arr_img{
+        display: block;
+    }
+     .item_name{
+        padding-right: 25px;
+    }    
+    
     .main_nav_container {
         padding: 8px 10px;
     }
+    .main_nav_items{
+        background-color: #1e1e1e;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        position: absolute;
+        background: #f5c518;
+        top: 56px;
+        text-align: center;
+        right: 0px;
+        width:0;
+        flex-direction: column;
+        transition: width 300ms linear;
+        
+    }
+    .menu{
+        display: block;
+        position: absolute;
+    right: 19px;
+    top: 9px;
+    cursor: pointer;
+    }
     .main_nav_item {
-        margin: 0 10px;
+        width: 100%;
+        margin: 0 16px;
+        border-bottom: 1px solid #c7c6c6;
     }
     .logo_img {
         height: 35px;
         width: 35px;
+    }
+    .width_nav{
+        width: 300px;
+        border-bottom-left-radius: 12px;
     }
 }

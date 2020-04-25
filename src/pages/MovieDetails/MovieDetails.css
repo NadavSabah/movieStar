@@ -164,6 +164,11 @@
     }
     .overview_txt{
         width: 91%;
+        display: -webkit-box;
+        -webkit-line-clamp: 12;
+        -webkit-box-orient: vertical;
+        text-overflow: ellipsis;
+        overflow: hidden;
     }
     
     .info_container {

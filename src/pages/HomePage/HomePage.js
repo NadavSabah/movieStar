@@ -56,7 +56,10 @@ const HomePage = ({ inputResults, setConfigForFetch, setPopularList, popularList
 
 
                 {upcomingList ?
-                    <MovieList list={upcomingList} title={'Coming soon...'} />
+                    <div className='come_so_wrapper'>
+
+                        <MovieList list={upcomingList} title={'Coming soon...'} />
+                    </div>
                     : null
                 }
             </div>

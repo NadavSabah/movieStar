@@ -6,7 +6,6 @@ import CastPreview from '../../cmps/CastPreview/CastPreview'
 import MovieList from '../../cmps/MovieList/MovieList'
 
 const MovieDetails = ({ history, movie, baseUrl, displaySizeBg, displaySizeCard, setCurrMovie, setConfigForFetch, recs, recentlyViewed, addToRecentlyList }) => {
-    // let [genresToRender,setGenresToRender]=useState([])
     useEffect(() => {
         setTimeout(() => {
             async function getData() {
@@ -18,9 +17,12 @@ const MovieDetails = ({ history, movie, baseUrl, displaySizeBg, displaySizeCard,
                 getData()
             }
         }, 3000)
-        // let topPage = document.getElementsByClassName('.movie_title').focus()
-        window.scrollTo(0, 0);
+        console.log('didMount movieDetails')
     }, [])
+    useEffect(() => {
+        window.scrollTo(0, 0);
+
+    }, [movie])
 
 
     const numberWithCommas = (num) => {

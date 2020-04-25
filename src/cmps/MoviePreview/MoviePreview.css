@@ -42,7 +42,10 @@
 .movie_note_single {
     border-bottom: 1px solid lightgray;
     padding: 5px;
+    color: black;
 }
+
+
 
 .movie_note_single:hover {
     background-color: #f5c518;
