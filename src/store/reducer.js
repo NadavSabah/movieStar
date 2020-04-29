@@ -10,7 +10,8 @@ const INITIAL_STATE = {
     recommended: null,
     watchList: [],
     recentlyViewed: [],
-    isShowSucMsg: ''
+    isShowSucMsg: '',
+    isDark: false
     // genresList:null
 }
 const reducer = (state = INITIAL_STATE, action) => {
@@ -44,6 +45,8 @@ const reducer = (state = INITIAL_STATE, action) => {
             return { ...state, recentlyViewed: action.data }
         case 'SET_SHOW_SUC_MSG':
             return { ...state, isShowSucMsg: action.data }
+        case 'SET_DARK_MODE':
+            return { ...state, isDark: action.data }
 
     }
 

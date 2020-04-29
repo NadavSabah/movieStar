@@ -9,7 +9,7 @@ import addThis from '../../cmps/addthis/adddthis'
 const API = '5c90c388a02f4e1f5527d7ab55af038f'
 
 const HomePage = ({ inputResults, setConfigForFetch, setPopularList, popularList, setUpcomingList,
-    upcomingList, recentlyViewed, loadRecentlyList, getLastSearch }) => {
+    upcomingList, recentlyViewed, loadRecentlyList, getLastSearch, isDark }) => {
     const [userInput, setUserInput] = useState('')
 
     useEffect(
@@ -40,7 +40,7 @@ const HomePage = ({ inputResults, setConfigForFetch, setPopularList, popularList
 
             <UserInput inputResult={inputResult} />
             {inputResults ?
-                <div className="search_result_wrapper">
+                <div className={(isDark ? "dark_bg" : "bright_bg")}>
                     {inputResults ?
                         <MovieList title={'Search result'} list={inputResults} />
                         : null
@@ -56,7 +56,7 @@ const HomePage = ({ inputResults, setConfigForFetch, setPopularList, popularList
 
 
                 {upcomingList ?
-                    <div className='come_so_wrapper'>
+                    <div className={isDark ? "dark_bg" : "bright_bg"}>
 
                         <MovieList list={upcomingList} title={'Coming soon...'} />
                     </div>
@@ -95,7 +95,8 @@ const mapStateToProps = state => {
         popularList: state.popularList,
         upcomingList: state.upcomingList,
         watchList: state.watchList,
-        recentlyViewed: state.recentlyViewed
+        recentlyViewed: state.recentlyViewed,
+        isDark: state.isDark
     }
 }
 const mapDIspatchToProps = dispatch => {

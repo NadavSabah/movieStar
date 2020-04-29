@@ -7,7 +7,7 @@ import './MoviePreview.css'
 import dots from '../../assets/imgs/3dots.svg'
 
 
-const MoviePreview = ({ imgUrl, data, setCurrMovie, recentlylist, handleNoteOpen }) => {
+const MoviePreview = ({ imgUrl, data, setCurrMovie, recentlylist, handleNoteOpen, isDark }) => {
 
     const onSetCurrMovie = () => {
         setCurrMovie(data.id, recentlylist)
@@ -21,8 +21,8 @@ const MoviePreview = ({ imgUrl, data, setCurrMovie, recentlylist, handleNoteOpen
 
             <NavLink className="mp_link" to={'/' + data.id}>
                 <div className='movie_card' onClick={onSetCurrMovie}>
-                    <img className="movie_img" src={imgUrl} />
-                    <div className='movie_name'>{data.title}</div>
+                    <img className={"movie_img" + (isDark ? "" : " bright_shadow")} src={imgUrl} />
+                    <div className={'movie_name' + (isDark ? " bright_txt" : " dark_txt")}>{data.title}</div>
                 </div>
             </NavLink>
         </div>
@@ -31,7 +31,8 @@ const MoviePreview = ({ imgUrl, data, setCurrMovie, recentlylist, handleNoteOpen
 }
 const mapStateToProps = state => {
     return {
-        showNote: state.showNote
+        showNote: state.showNote,
+        isDark: state.isDark
     }
 }
 const mapDispatchToProps = dispatch => {

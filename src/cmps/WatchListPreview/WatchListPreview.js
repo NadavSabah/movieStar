@@ -6,7 +6,7 @@ import './WatchListPreview.css'
 import img from '../../assets/imgs/remove.svg'
 import img1 from '../../assets/imgs/filled_remove.svg'
 
-const WatchListPreview = ({ imgUrl, data, setCurrMovie, watchList, setDeleteWatchList }) => {
+const WatchListPreview = ({ imgUrl, data, setCurrMovie, watchList, setDeleteWatchList, isDark }) => {
 
     const onSetCurrMovie = () => {
         setCurrMovie(data.id)
@@ -14,10 +14,10 @@ const WatchListPreview = ({ imgUrl, data, setCurrMovie, watchList, setDeleteWatc
     const deleteFavorite = () => {
         const index = watchList.findIndex(watch => {
             return watch.id === data.id
-        })  
+        })
         setDeleteWatchList(index, watchList)
         window.location.reload()
-        return false 
+        return false
         // console.log('History:', props)
         // history.push(`/WatchList`)
     }
@@ -25,29 +25,34 @@ const WatchListPreview = ({ imgUrl, data, setCurrMovie, watchList, setDeleteWatc
     return (
 
         // <div className="total_container">
-                <div className='wl_container' onClick={onSetCurrMovie}>
+        <div className={'wl_container' + (isDark ? "" : " bright_shadow")} onClick={onSetCurrMovie}>
             <Link className="mp_wl_link" to={'/' + data.id}>
 
-                    <div className="wl_content">
+                <div className="wl_content">
 
-                        <h3 className='wl_title'>{data.title}</h3>
-                        <div className='wl_rate'>{data.vote_average}</div>
-                        <div className='wl_date'>{data.release_date}</div>
-                        <div className='wl_overview'>{data.overview}</div>
-                    </div>
-                    <img className="wl_movie_img" src={imgUrl} />
+                    <h3 className='wl_title'>{data.title}</h3>
+                    <div className='wl_rate'>{data.vote_average}</div>
+                    <div className='wl_date'>{data.release_date}</div>
+                    <div className='wl_overview'>{data.overview}</div>
+                </div>
+                <img className="wl_movie_img" src={imgUrl} />
             </Link>
 
             <a onClick={deleteFavorite} className='romove_container'>
                 <img className="wl_remove" src={img} />
                 <img className="wl_fremove" src={img1} />
             </a>
-                </div>
+        </div>
 
         // </div>
 
 
     )
+}
+const mapStateToProps = state => {
+    return {
+        isDark: state.isDark
+    }
 }
 const mapDispatchToProps = dispatch => {
     return {
@@ -62,4 +67,4 @@ const mapDispatchToProps = dispatch => {
         }
     }
 }
-export default connect(null, mapDispatchToProps)(WatchListPreview)
+export default connect(mapStateToProps, mapDispatchToProps)(WatchListPreview)

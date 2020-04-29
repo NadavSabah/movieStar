@@ -1,91 +1,46 @@
-import React, { useEffect } from 'react';
-import { BrowserRouter as Router, Route, NavLink, Switch } from 'react-router-dom'
+import React, { useState, useRef, useEffect } from 'react';
+import { useOnClickOutside } from './hooks/useOnClickOutside'
+import { BrowserRouter as Router, Route, NavLink, Link, Switch } from 'react-router-dom'
 import HomePage from './pages/HomePage/HomePage'
 import WatchList from './pages/WatchList/WatchList'
 import AboutUs from './pages/AboutUs/AboutUs'
 import './App.css';
 import Moviedetails from './pages/MovieDetails/MovieDetails';
-import icon from './assets/imgs/icon.svg'
 import check from './assets/imgs/check.svg'
-import menu from './assets/imgs/menu.svg'
-import arrow from './assets/imgs/rightArrow.svg'
 import { connect } from 'react-redux'
+import NavBar from './cmps/NavBar/NavBar'
 
-
-
-function App({ msg }) {
-
-  let prevScrollpos = window.pageYOffset;
-  window.onscroll = function () {
-    let currentScrollPos = window.pageYOffset;
-    if (prevScrollpos > currentScrollPos) {
-      document.getElementById("navbar").style.top = "0";
-    } else {
-      document.getElementById("navbar").style.top = "-60px";
+function App({ msg, setDarkMode, isDark }) {
+  useEffect(() => {
+    if (isDark) {
+      document.body.style.backgroundColor = "#2d2d2d"
+      document.body.style.color = "white";
+    }
+    else {
+      document.body.style.backgroundColor = "#f5f5f5";
+      document.body.style.color = "black";
 
     }
-    prevScrollpos = currentScrollPos;
-  }
-  const toggleMenu = () => {
-    console.log('toggleMenu function')
-    var navBar = document.getElementsByClassName("main_nav_items")[0];
-    console.log('navBar:', navBar)
-    navBar.classList.toggle("width_nav");
-    // if (element.classList.contains("width_nav")) {
 
-    //   navBar.style.width = "0";
-    // } else {
-    //   navBar.classList.add("width_nav");
-    //   // navBar.style.width = "300px";
-    // }
   }
+    , [isDark])
 
+  const [isOpen, setIsOpen] = useState(false)
+
+  const node = useRef();
+
+  useOnClickOutside(node, () => setIsOpen(false));
   return (
 
+    <Router className="router" >
+      <div ref={node}>
+        <NavBar setDarkMode={setDarkMode} isOpen={isOpen} setIsOpen={setIsOpen} />
+      </div>
 
-    <Router >
-
-      <header id="navbar" className="main_nav_container">
-        <div className="logo_app"><img className="logo_img" src={icon} />
-          <img onClick={toggleMenu} className="menu" src={menu} />
-          <div className="transition">
-
-            <ul className="main_nav_items main_nav"  >
-              {/* <ul className="main_nav_items main_nav" > */}
-              <li className="main_nav_item">
-                <NavLink className="item_name" exact to="/">Home
-                <img className="arr_img" src={arrow} />
-                </NavLink>
-
-              </li>
-              <li className="main_nav_item">
-                <NavLink className="item_name" to="/WatchList">WatchList
-                <img className="arr_img" src={arrow} />
-                </NavLink>
-              </li>
-              <li className="main_nav_item">
-                <NavLink className="item_name item_about" to="/AboutUs">AboutUs
-                <img className="arr_img" src={arrow} />
-                </NavLink>
-              </li>
-            </ul>
-          </div>
-
-        </div>
-
-
-        {/* <nav className="main_nav"> */}
-
-        {/* </nav> */}
-
-      </header>
       {msg.isShow ?
-        // <div className="suc_msg_wrapper">
-
         <div className="suc_msg">
           <img className="msg_check_img" src={check} />
           {`Successfully ${msg.content} your WatchList`}</div>
-        // </div>
         : null
       }
 
@@ -100,11 +55,19 @@ function App({ msg }) {
   );
 }
 
-
+const mapDispatchToProps = dispatch => {
+  return {
+    setDarkMode: (isDark) => {
+      dispatch({ type: 'SET_DARK_MODE', data: isDark })
+    }
+  }
+}
 const mapStaeToProps = state => {
   return {
-    msg: state.isShowSucMsg
+    msg: state.isShowSucMsg,
+    isDark: state.isDark
+
   }
 }
 
-export default connect(mapStaeToProps)(App);
+export default connect(mapStaeToProps, mapDispatchToProps)(App);

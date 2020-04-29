@@ -1,3 +1,9 @@
+.bright_bg{
+    background-color: #dcdcdc;
+}
+.dark_bg{
+    background-color: #7a7a7a;
+}
 .sub_title {
     width: 100%;
     padding: 30px;
@@ -34,6 +40,7 @@
     text-align: center;
     background: #222222;
     padding: 10px;
+    color: white;
 }
 .share_wrapper{
     text-align: center;
@@ -43,16 +50,12 @@
     background: #222222;
     padding: 20px;
 }
-.search_result_wrapper{
-    background-color: #7a7a7a;
-}
+
 .rv_no_history{
     padding-left: 13px;
     text-align: center;
 }
-.come_so_wrapper{
-    background-color: #7a7a7a;;
-}
+
 @keyframes spin {
     0% {
         transform: rotate(0deg);

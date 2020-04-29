@@ -1,12 +1,6 @@
 body {
     font-family: 'Roboto Condensed', sans-serif;
-    /* background-color: #1e1e1e; */
     background-color: #2d2d2d;
-    
-    /* background-color: #FFFFFF;
-background-image: linear-gradient(0deg, #FFFFFF 0%, #1e1e1e 46%); */
-    /* background-color: #FFFFFF;
-background-image: linear-gradient(335deg, #FFFFFF 0%, #000000 78%); */
     color: white;
 }
 a{
@@ -19,6 +13,15 @@ h1 {
 
 * {
     box-sizing: border-box;
+}
+.dark_txt{
+color:black
+}
+.bright_txt{
+    color:white
+}
+.bright_shadow{
+    box-shadow: 1px 1px 3px 0px black;
 }
 .suc_msg{
     background: #5fb662;
@@ -68,87 +71,6 @@ h1 {
 ::-webkit-scrollbar-thumb:hover {
     background: #555;
 }
-
-#navbar {
-    width: 100%;
-    background: #f5c518;
-    padding: 8px 16px;
-    display: block;
-    z-index: 1;
-  transition: top 0.3s;
-  position: fixed;
-  top:0;    
-}
-#navbar a {
-    float: left;
-    display: block;
-    font-size: 17px;
-    width: 100%;
-    text-align: left;
-  }
-
-.logo_app {
-    width: 40px;
-    height: 40px;
-}
-
-.logo_img {
-    height: 40px;
-    width: 40px
-}
-
-.main_nav {
-    width: 100%;
-    /* width:calc(100%-75px); */
-    text-align: right;
-    position: fixed;
-    top: 0;
-    transition: top 0.3s;
-}
-
-.main_nav_item {
-    display: inline-block;
-    margin: 0 16px;
-}
-
-
-/* .main_nav_item:hover,
-.main_nav_item:active{
-  color:white;
-} */
-
-.main_nav_item a:hover,
-.main_nav_item a:active,
-.main_nav_item a.active {
-    color: white;
-}
-
-.main_nav_items {
-    margin: 0;
-    padding: 0;
-    list-style: none;
-    position: absolute;
-    display: block;
-    /* transform: translate(0%, 50%); */
-}
-.menu{
-    display: none;
-
-}
-
-.item_name {
-    text-decoration: none;
-    color: #1e1e1e;
-    font-weight: bold;
-    padding: 15px 3px;
-}
-.item_about{
-    padding-right: 20px;
-}
-.arr_img{
-    display: none;
-}
-
 @media screen and (max-width: 600px) {
    
     #navbar a {
@@ -165,21 +87,7 @@ h1 {
     .main_nav_container {
         padding: 8px 10px;
     }
-    .main_nav_items{
-        background-color: #1e1e1e;
-        margin: 0;
-        padding: 0;
-        list-style: none;
-        position: absolute;
-        background: #f5c518;
-        top: 56px;
-        text-align: center;
-        right: 0px;
-        width:0;
-        flex-direction: column;
-        transition: width 300ms linear;
-        
-    }
+
     .menu{
         display: block;
         position: absolute;
@@ -196,8 +104,5 @@ h1 {
         height: 35px;
         width: 35px;
     }
-    .width_nav{
-        width: 300px;
-        border-bottom-left-radius: 12px;
-    }
+  
 }
