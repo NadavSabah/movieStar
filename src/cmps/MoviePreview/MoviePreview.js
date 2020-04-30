@@ -22,7 +22,7 @@ const MoviePreview = ({ imgUrl, data, setCurrMovie, recentlylist, handleNoteOpen
             <NavLink className="mp_link" to={'/' + data.id}>
                 <div className='movie_card' onClick={onSetCurrMovie}>
                     <img className={"movie_img"} src={imgUrl} />
-                    <div className={'movie_name'}>{data.title}</div>
+                    <div className={'movie_name' + (isDark ? " bright_txt" : " dark_txt")}>{data.title}</div>
                 </div>
             </NavLink>
         </div>

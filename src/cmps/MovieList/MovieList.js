@@ -5,7 +5,7 @@ import './MovieList.css'
 import movieService from '../../services/movieService'
 import MoviePreview from '../MoviePreview/MoviePreview'
 
-const MovieList = ({ list, title, baseUrl, displaySizeCard, watchList, setAddWatchList, setDeleteWatchList, recentlyViewed, setIsSucMsg }) => {
+const MovieList = ({ list, title, baseUrl, displaySizeCard, watchList, setAddWatchList, setDeleteWatchList, recentlyViewed, setIsSucMsg, isDark }) => {
     const [showWindow, setShowWindow] = useState(false)
     const [noteId, setNoteId] = useState(null)
 
@@ -71,7 +71,7 @@ const MovieList = ({ list, title, baseUrl, displaySizeCard, watchList, setAddWat
             <h1 className="sub_title">{title}</h1>
             : null
         }
-        < div className='movies_container' >
+        < div className={'movies_container' + (isDark ? " bright_txt" : " dark_txt")} >
             <div>
 
             </div>
@@ -110,6 +110,7 @@ const mapStateToProps = state => {
         displaySizeCard: state.displaySizeCard,
         watchList: state.watchList,
         recentlyViewed: state.recentlyViewed,
+        isDark: state.isDark
 
 
     }
