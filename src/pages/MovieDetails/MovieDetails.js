@@ -5,7 +5,8 @@ import { connect } from 'react-redux'
 import CastPreview from '../../cmps/CastPreview/CastPreview'
 import MovieList from '../../cmps/MovieList/MovieList'
 
-const MovieDetails = ({ history, movie, baseUrl, displaySizeBg, displaySizeCard, setCurrMovie, setConfigForFetch, recs, recentlyViewed, addToRecentlyList }) => {
+const MovieDetails = ({ history, movie, baseUrl, displaySizeBg, displaySizeCard, setCurrMovie, setConfigForFetch,
+    recs, recentlyViewed, addToRecentlyList, isDark }) => {
     useEffect(() => {
         setTimeout(() => {
             async function getData() {
@@ -122,12 +123,14 @@ const MovieDetails = ({ history, movie, baseUrl, displaySizeBg, displaySizeCard,
                         </div>
                         : null
                     }
+                    <div className={isDark ? "bright_txt" : "dark_txt bright_bg"}>
 
-                    <h3 className="ml_title">More Like "{movie.title}"</h3>
-                    {movie.recommendations.results ?
-                        <MovieList list={movie.recommendations.results} />
-                        : null
-                    }
+                        <h3 className="ml_title">More Like "{movie.title}"</h3>
+                        {movie.recommendations.results ?
+                            <MovieList list={movie.recommendations.results} />
+                            : null
+                        }
+                    </div>
 
                 </div>
 
@@ -143,7 +146,8 @@ const mapStateToProps = state => {
         baseUrl: state.baseUrl,
         displaySizeCard: state.displaySizeCard,
         displaySizeBg: state.displaySizeBg,
-        recentlyViewed: state.recentlyViewed
+        recentlyViewed: state.recentlyViewed,
+        isDark: state.isDark,
 
 
     }

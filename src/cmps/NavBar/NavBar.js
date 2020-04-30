@@ -26,7 +26,8 @@ const NavBar = ({ isOpen, setIsOpen, setDarkMode }) => {
     }
     const handleOnChange = (event) => {
         let checkbox = document.querySelector('input[type="checkbox"]');
-        setDarkMode(checkbox.checked)
+        setDarkMode(!checkbox.checked)
+
         console.log('the event is', event)
         console.log('checkbox.checked', checkbox.checked)
     }
@@ -39,12 +40,12 @@ const NavBar = ({ isOpen, setIsOpen, setDarkMode }) => {
 
                 <ul className={"main_nav_items main_nav" + (isOpen ? " width_nav" : "")}  >
                     <li className="main_nav_item dark_mode  ">
-                        <img className="img_sun" src={sun} />
+                        <img className="img_moon" src={moon} />
                         <label className="switch">
                             <input onChange={(e) => handleOnChange(e)} type="checkbox" />
                             <span className="slider round"></span>
                         </label>
-                        <img className="img_moon" src={moon} />
+                        <img className="img_sun" src={sun} />
                     </li>
                     <li className="main_nav_item">
                         <NavLink onClick={() => setIsOpen(false)} className="item_name" exact to="/">Home
