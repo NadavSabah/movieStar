@@ -71,7 +71,7 @@ const MovieList = ({ list, title, baseUrl, displaySizeCard, watchList, setAddWat
             <h1 className="sub_title">{title}</h1>
             : null
         }
-        < div className={'movies_container' + (isDark ? " bright_txt" : " dark_txt")} >
+        < div className='movies_container'  >
             <div>
 
             </div>

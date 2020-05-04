@@ -1,6 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { useOnClickOutside } from './hooks/useOnClickOutside'
 import { BrowserRouter as Router, Route, NavLink, Link, Switch } from 'react-router-dom'
+import movieService from './services/movieService'
 import HomePage from './pages/HomePage/HomePage'
 import WatchList from './pages/WatchList/WatchList'
 import AboutUs from './pages/AboutUs/AboutUs'
@@ -11,7 +12,9 @@ import { connect } from 'react-redux'
 import NavBar from './cmps/NavBar/NavBar'
 
 function App({ msg, setDarkMode, isDark }) {
+
   useEffect(() => {
+
     if (isDark) {
       document.body.style.backgroundColor = "#2d2d2d"
       document.body.style.color = "white";
@@ -21,7 +24,6 @@ function App({ msg, setDarkMode, isDark }) {
       document.body.style.color = "black";
 
     }
-
   }
     , [isDark])
 
@@ -34,7 +36,7 @@ function App({ msg, setDarkMode, isDark }) {
 
     <Router className="router" >
       <div ref={node}>
-        <NavBar setDarkMode={setDarkMode} isOpen={isOpen} setIsOpen={setIsOpen} />
+        <NavBar isDark={isDark} setDarkMode={setDarkMode} isOpen={isOpen} setIsOpen={setIsOpen} />
       </div>
 
       {msg.isShow ?
@@ -57,8 +59,10 @@ function App({ msg, setDarkMode, isDark }) {
 
 const mapDispatchToProps = dispatch => {
   return {
-    setDarkMode: (isDark) => {
-      dispatch({ type: 'SET_DARK_MODE', data: isDark })
+    setDarkMode: async (isDark) => {
+      const resIsDark = await movieService.setIsDarkMode(isDark)
+      dispatch({ type: 'SET_DARK_MODE', data: resIsDark })
+      // return resIsDark
     }
   }
 }

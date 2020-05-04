@@ -31,6 +31,7 @@ const HomePage = ({ inputResults, setConfigForFetch, setPopularList, popularList
         , [])
 
 
+
     const inputResult = (value) => {
         setUserInput(value)
     }
@@ -71,11 +72,6 @@ const HomePage = ({ inputResults, setConfigForFetch, setPopularList, popularList
                 </div>
             }
 
-            {/* brightBackground */}
-
-            {/* <div className="addthis_inline_share_toolbox_d9cr"></div> */}
-
-            {/* darkBackground */}
 
             <h1 className="share_title">MovieStar app</h1>
             {/* <div className="add-this"></div> */}
@@ -120,7 +116,6 @@ const mapDIspatchToProps = dispatch => {
         loadRecentlyList: async () => {
             let recentlyList = await movieService.loadRecentlyList()
             if (recentlyList) {
-                // let watchList = movieService.loadWatchList(watchList)
                 dispatch({ type: 'LOAD_RECENTLY_VIEWED', data: recentlyList })
 
             }

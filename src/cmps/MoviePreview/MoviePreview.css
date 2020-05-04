@@ -3,10 +3,10 @@
     height: 250px;
     margin: 3px;
     border-radius: 7px;
-    /* box-shadow: 1px 1px 3px 0px black; */
-
 }
-
+.movie_shadow{
+    box-shadow: 1px 1px 3px 0px black;
+}
 
 .movie_name {
     padding: 6px 0;

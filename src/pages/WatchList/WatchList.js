@@ -14,13 +14,7 @@ const WatchList = ({ watchList, baseUrl, displaySizeCard, setAddWatchList,
         getData()
 
     }, [])
-    // const hadaleWatchList = (movie) => {
-    //     const index = watchList.findIndex(watch => {
-    //         return watch.id === movie.id
-    //     })
-    //     if (index !== -1) setDeleteWatchList(index, watchList)
-    //     else setAddWatchList(movie, watchList)
-    // }
+
     return (
         <div>
             {watchList.length
@@ -36,7 +30,12 @@ const WatchList = ({ watchList, baseUrl, displaySizeCard, setAddWatchList,
                         }
                     </div>
                 )
-                : <h4 style={{ textAlign: 'center' }}>Your watchlist is empty</h4>
+                :
+                <div>
+
+                    <h4 style={{ marginTop: '75px', textAlign: 'center' }}>Your watchlist is empty</h4>
+                </div>
+
             }
         </div>
     )

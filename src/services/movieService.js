@@ -9,7 +9,8 @@ export default {
     DeleteFromWatchList,
     loadWatchList,
     addToRecentlyList,
-    loadRecentlyList
+    loadRecentlyList,
+    setIsDarkMode
 
 }
 const API = '5c90c388a02f4e1f5527d7ab55af038f'
@@ -139,25 +140,26 @@ function loadRecentlyList() {
 
 }
 
-// async function getRecommendations(movieId) {
-//     let res = await axios.get(`https://api.themoviedb.org/3/movie/${movieId}/recommendations?api_key=${API}&language=en-US&page=1`)
-//     return res.data.results
-// }
-// async function getGenresList() {
-//     let res;
-//     console.log('in the getGenresList function')
-//     if (localStorage.getItem('genresList') === null) {
-//         res = await axios.get(`https://api.themoviedb.org/3/genre/movie/list?api_key=${API}&language=en-US`)
-//         localStorage.setItem('genresList', JSON.stringify(res.data.genres))
-//         return res.data.genres
-//     }
-//     else {
-//         res = localStorage.getItem('genresList')
-//         res = JSON.parse(res)
-//         return res
+async function setIsDarkMode(isDark) {
+    console.log('movieService isDark:', isDark)
+    let res;
+    // console.log('isDark is', isDark)
+    if (isDark === false || isDark === true) {
+        localStorage.setItem('DarkMode', JSON.stringify(isDark))
+        res = isDark
+    }
+    else {
+        // console.log('in the else isDark:', isDark)
+        res = await localStorage.getItem('DarkMode')
 
-//     }
-// }
+    }
+
+    console.log('res before return', res)
+    return res
+
+}
+
+
 
 // async function getGenresByName(genresIds) {
 //     let genresToRender = [];

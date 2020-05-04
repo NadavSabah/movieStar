@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import { connect } from 'react-redux'
 import movieService from '../../services/movieService'
 import { Link } from 'react-router-dom'
@@ -18,13 +18,10 @@ const WatchListPreview = ({ imgUrl, data, setCurrMovie, watchList, setDeleteWatc
         setDeleteWatchList(index, watchList)
         window.location.reload()
         return false
-        // console.log('History:', props)
-        // history.push(`/WatchList`)
+
     }
-    // const  deleteFavorite = ()=>{ window.location.reload(); }
     return (
 
-        // <div className="total_container">
         <div className={'wl_container' + (isDark ? "" : " bright_shadow")} onClick={onSetCurrMovie}>
             <Link className="mp_wl_link" to={'/' + data.id}>
 
@@ -43,9 +40,6 @@ const WatchListPreview = ({ imgUrl, data, setCurrMovie, watchList, setDeleteWatc
                 <img className="wl_fremove" src={img1} />
             </a>
         </div>
-
-        // </div>
-
 
     )
 }

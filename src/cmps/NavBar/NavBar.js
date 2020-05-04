@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { BrowserRouter as Router, Route, NavLink, Link, Switch } from 'react-router-dom'
 import './NavBar.css'
 import icon from './../../assets/imgs/icon.svg'
@@ -8,8 +8,12 @@ import sun from './../../assets/imgs/sun.svg'
 import moon from './../../assets/imgs/moon.svg'
 
 
-const NavBar = ({ isOpen, setIsOpen, setDarkMode }) => {
+const NavBar = ({ isOpen, setIsOpen, setDarkMode, isDark }) => {
+    useEffect(() => {
+        let checkbox = document.querySelector('input[type="checkbox"]');
+        checkbox.checked = isDark
 
+    }, [])
     let prevScrollpos = window.pageYOffset;
     window.onscroll = function () {
         let currentScrollPos = window.pageYOffset;
@@ -27,9 +31,6 @@ const NavBar = ({ isOpen, setIsOpen, setDarkMode }) => {
     const handleOnChange = (event) => {
         let checkbox = document.querySelector('input[type="checkbox"]');
         setDarkMode(!checkbox.checked)
-
-        console.log('the event is', event)
-        console.log('checkbox.checked', checkbox.checked)
     }
     return (
         <header id="navbar" className="main_nav_container">

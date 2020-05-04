@@ -11,7 +11,7 @@ const INITIAL_STATE = {
     watchList: [],
     recentlyViewed: [],
     isShowSucMsg: '',
-    isDark: true
+    isDark: null
     // genresList:null
 }
 const reducer = (state = INITIAL_STATE, action) => {
