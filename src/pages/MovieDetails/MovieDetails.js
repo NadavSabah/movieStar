@@ -1,12 +1,15 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import movieService from './../../services/movieService'
+import moment from 'moment'
 import './MovieDetails.css'
 import { connect } from 'react-redux'
 import CastPreview from '../../cmps/CastPreview/CastPreview'
 import MovieList from '../../cmps/MovieList/MovieList'
+import star from '../../assets/imgs/star.svg'
 
 const MovieDetails = ({ history, movie, baseUrl, displaySizeBg, displaySizeCard, setCurrMovie, setConfigForFetch,
     recs, recentlyViewed, addToRecentlyList, isDark }) => {
+    let [titlefontSize, setTitleFontSize] = useState('1.5em')
     useEffect(() => {
         setTimeout(() => {
             async function getData() {
@@ -23,11 +26,32 @@ const MovieDetails = ({ history, movie, baseUrl, displaySizeBg, displaySizeCard,
     useEffect(() => {
         window.scrollTo(0, 0);
 
+
     }, [movie])
 
+    const setFontSizeBaseOnLength = (movieName) => {
 
+        let movieWords = []
+        movieWords = movieName.split('')
+        let length = movieWords.length
+        console.log('movieWords', movieWords)
+        console.log('length is ', length)
+        if (length > 20) {
+            if (titlefontSize !== '1em') setTitleFontSize('1em')
+            console.log('length is longer than 15')
+
+        }
+        else {
+            if (titlefontSize !== '1.5em') setTitleFontSize('1.5em')
+            console.log('length is more than 15')
+        }
+
+
+    }
     const numberWithCommas = (num) => {
-        return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+        return movieService.numToDisplay(num)
+
+
     }
 
     return (
@@ -35,74 +59,64 @@ const MovieDetails = ({ history, movie, baseUrl, displaySizeBg, displaySizeCard,
 
             {movie ?
                 <div>
-
-
                     <div className='imgs_container'>
-                        <div className='main_details'>
-                            <h2 className='movie_title'>{movie.title}</h2>
-
-                            <div className="info_container">
-                                <div className='geners_container'>
-                                    {
-                                        movie.genres.map((genre, idx) => {
-                                            if (idx >= movie.genres.length - 1) { return <div key={idx}>{genre.name} |&nbsp;&nbsp;</div> }
-                                            else return <div key={idx}>{`${genre.name},`}&nbsp;&nbsp;</div>
-                                        }
-                                        )
-                                    }
-                                </div>
-                                <div className="md_date_time_warapper">
-
-                                    <div> {movie.release_date} |&nbsp;&nbsp;</div>
-                                    <div> {movie.runtime} min |&nbsp;&nbsp;</div>
-                                </div>
-
-
-                            </div>
-
-                            <h4>{movie.tagline}</h4>
-
-                        </div>
-                        <p className='overview_txt'> {movie.overview}</p>
-
                         <div className='img_bg_wrapper'>
                             <img className='img_bg' src={`${baseUrl}${displaySizeBg}${movie.backdrop_path}`} />
-                            {/* <h1 style={{ color: 'orange', fontSize: '4em' }}>nadav sabah</h1> */}
-                        </div>
-                        <div class="md_img_data">
+                            <div className='main_details'>
+                                <h2 style={{ fontSize: titlefontSize }} className='movie_title'>{setFontSizeBaseOnLength(movie.title)}{movie.title.toUpperCase()}</h2>
+
+                                <div className="info_container">
+                                    <div className="top_details">
+                                        <div className='geners_container'>
+                                            {
+                                                movie.genres.map((genre, idx) => {
+                                                    if (idx >= movie.genres.length - 1) { return <div key={idx}>{genre.name} |&nbsp;&nbsp;</div> }
+                                                    else return <div key={idx}>{`${genre.name},`}&nbsp;&nbsp;</div>
+                                                }
+                                                )
+                                            }
+                                        </div>
+                                        <div className="md_date_time_wrapper">
+
+                                            <div> {moment(movie.release_date).format('MMM YY')} |&nbsp;&nbsp;</div>
+                                            <div> {movie.runtime} min |&nbsp;&nbsp;</div>
+                                        </div>
+                                    </div>
 
 
-                            <div className='data_img_container'>
+                                    <div className="languages">
 
-                                <div className='img_card_wrapper'>
-                                    <img className="md_movie_img" src={`${baseUrl}${displaySizeCard}${movie.poster_path}`} />
-                                </div>
-
-                                <div className='side_data_container'>
-
-                                    <div title={`base on ${movie.vote_count} votes  `}><b>Score</b><br />{movie.vote_average}</div>
-                                    <div><b>Status</b><br />{movie.status}</div>
-                                    <div><b>Budget</b><br />{numberWithCommas(movie.budget)}</div>
-                                    <div><b>Reveune</b><br />{numberWithCommas(movie.revenue)}</div>
-                                    <div>
                                         {
-                                            movie.spoken_languages.length > 1 ? <div><b>Languages</b><br /></div>
-                                                : <div><b>Language</b><br /> </div>}
-                                        {
-                                            movie.spoken_languages.map((lang, idx) =>
-                                                <div key={idx}>{lang.name}</div>
+                                            movie.spoken_languages.map((lang, idx) => {
+                                                if (idx >= movie.genres.length - 1) { return <div key={idx}>{lang.name} &nbsp;&nbsp;</div> }
+                                                else return <div key={idx}>{`${lang.name},`}&nbsp;&nbsp;</div>
+                                            }
                                             )}
                                     </div>
                                 </div>
-                            </div>
 
+                            </div>
+                            <div className='side_data_container'>
+
+                                <div className="sub_data" title={`base on ${movie.vote_count} votes  `}><span className="sub_tit">Score</span><div className="desc_tit">{movie.vote_average} <img className="img_star" src={star} /></div></div>
+                                <div className="sub_data"><span className="sub_tit">Status</span><div className="desc_tit">{movie.status.toUpperCase()}</div></div>
+                                <div className="sub_data"><span className="sub_tit">Budget</span><div className="desc_tit">{numberWithCommas(movie.budget)}</div></div>
+                                <div className="sub_data"><span className="sub_tit">Reveune</span><div className="desc_tit">{numberWithCommas(movie.revenue)}</div></div>
+
+                            </div>
+                        </div>
+                        <div className="overview_wrapper">
+
+                            <div className='overview_txt'>
+                                <h2 style={{ margin: 0 }}>SUMMARY</h2>
+                                <h4 className="movie_tagline">{movie.tagline}</h4>
+                                <p style={{ margin: 0 }}> {movie.overview}</p>
+                            </div>
                         </div>
                     </div>
-
-
                     {movie.videos.results ?
                         <div className="trailers_container" >
-                            <h2 className="sub_title">Videos</h2>
+                            <h2 className="sub_title">VIDEOS</h2>
                             {movie.videos.results.map((trailer, idx) =>
                                 <iframe className="md_youtube" key={idx} id="video" width="420" height="345"
                                     src={`https://www.youtube.com/embed/${trailer.key}`} frameBorder="20" allowFullScreen >
@@ -113,7 +127,7 @@ const MovieDetails = ({ history, movie, baseUrl, displaySizeBg, displaySizeCard,
                         </div>
                         : <p>no trailer available</p>
                     }
-                    <h2 className="sub_title">Movie Cast</h2>
+                    <h2 className="sub_title">MOVIE CAST</h2>
                     {movie.credits.cast ?
                         <div className="cast_container">
                             {movie.credits.cast.map((actor) =>
@@ -124,10 +138,8 @@ const MovieDetails = ({ history, movie, baseUrl, displaySizeBg, displaySizeCard,
                         : null
                     }
                     <div className={isDark ? "bright_txt" : "dark_txt bright_bg"}>
-
-                        <h3 className="ml_title">More Like "{movie.title}"</h3>
                         {movie.recommendations.results ?
-                            <MovieList list={movie.recommendations.results} />
+                            <MovieList list={movie.recommendations.results} title={`MORE LIKE "${movie.title.toUpperCase()}"`} />
                             : null
                         }
                     </div>

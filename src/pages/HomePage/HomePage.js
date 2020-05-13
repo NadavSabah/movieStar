@@ -43,14 +43,14 @@ const HomePage = ({ inputResults, setConfigForFetch, setPopularList, popularList
             {inputResults ?
                 <div className={(isDark ? "dark_bg" : "bright_bg")}>
                     {inputResults ?
-                        <MovieList title={'Search result'} list={inputResults} />
+                        <MovieList title={'SEARCH RESULT'} list={inputResults} />
                         : null
                     }
                 </div>
                 : null
             }
             {popularList ?
-                <MovieList list={popularList} title={'Popular Movies'} />
+                <MovieList list={popularList} title={'POPULAR MOVIES'} />
                 : null
             }
             <div className="light">
@@ -59,13 +59,13 @@ const HomePage = ({ inputResults, setConfigForFetch, setPopularList, popularList
                 {upcomingList ?
                     <div className={isDark ? "dark_bg" : "bright_bg"}>
 
-                        <MovieList list={upcomingList} title={'Coming soon...'} />
+                        <MovieList list={upcomingList} title={'COMING SOON'} />
                     </div>
                     : null
                 }
             </div>
             {recentlyViewed.length ?
-                <MovieList list={recentlyViewed} title={'Recently Viewed'} />
+                <MovieList list={recentlyViewed} title={'RECENTLY VIEWED'} />
                 : <div>
                     <h1 className='sub_title'>Recently Viewed</h1>
                     <h3 className='rv_no_history'>No history for now...</h3>

@@ -14,34 +14,36 @@
     flex-direction: column-reverse;
     height: 550px;
     
+    
 }
+
 .user_input{
+    height: 55px;
+    border-radius: 2px;
+    border: none;
     padding: 9px;
-    width: 55%;
-    border-radius: 28px;
+    width:60vw;
 }
 .input_btn{
-    padding: 11px;
+    width: 55px;
+    height:55px;
+    border-radius:2px;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
     position: relative;
-    right: 30px;
-    border-radius: 28px;
-    width: 85px;
+    right: 2px;
     border: none;
+    top:5px ;
     background: #f5c518;
-    color: black;
-    font-weight: bold;
-    cursor: pointer;
 }
-.input_btn:hover,
-.input_btn:active{
-color:white;
 
-}
+
 .bg_img_txt{
     margin-bottom: 50px;
     margin-left: 27px;
-    font-size: 3em;
-    width: 88%;
+    font-weight: bold;
+    font-size: 2em;
+    width: 520px;
     color:#f4f4f4;
 }
 @media screen and (max-width: 1670px) {
@@ -51,21 +53,61 @@ color:white;
    .user_input{
     width: 70%;
    }
-   .input_btn{
-    width:68px   
-   }
+
    .container_form{
     padding-top: 25px;
     padding-bottom: 30px;
    }
    .bg_img_txt{
-       font-size: 2.5em;
+       font-size: 1.8em;
        margin-bottom: 32px;
        margin-left: 15px;
+       width:auto
    }
   }
   @media screen and (max-width: 320px) {
     .bg_img_txt{
         font-size: 2.2em;
     }
+  }
+  @media screen and (max-width: 383px) {
+    .input_btn{
+        top:0;
+    }
+    .input_wrapper{
+        margin:0 auto;
+        background-image: url('../../assets/imgs/newBg.png');
+        background-position: center;
+        background-repeat: no-repeat;
+        display: flex;
+        flex-direction: column-reverse;
+        height: 550px;
+        
+    }
+    .bg_img_txt{
+        font-size: 1.5em;
+        width: 90%;
+        padding:0 5%;
+        letter-spacing: -0.14px;
+        color: #fffdf8;
+        margin-left: 0;
+        margin-bottom: 0;
+    }
+    .bg_txt_wrapper{
+        width: 100%;
+        margin: 0 5%;
+    }
+    .container_form {
+        position: relative;
+        text-align: center;
+        padding: 25px 0;
+        width: 100%;
+    }
+    .input_field{
+        display: flex;
+    justify-content: center;
+    margin: 0px 5%;
+    }
+
+
   }

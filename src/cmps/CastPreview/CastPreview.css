@@ -1,20 +1,23 @@
 .actor_wrapper{
-    margin: 5px;
-    border-radius: 8PX;
+    margin-right: 15px;
+    border-radius: 1px;
     background: #ffffff;
-    height: 248px;
-    max-width: 120px;
+    height: 305px;
+    max-width: 135px;
     color: black;
     text-align: left;
 }
 .actor_img{
-    border-radius: 7PX 7px 0 0 ;
-    height: 180px;
-    width: 120px;
+    border-radius: 1pX 1px 0 0;
+    height: 202px;
+    width: 135px;
+
 }
 .actor_name{
     margin: 2px;
     font-weight: bold;
+    padding-bottom: 6px;
+    padding-top: 9px;
 }
 .actor_char{
     margin: 2px;
@@ -29,14 +32,10 @@
 
 } 
 .actor_txt_wrapper{
-    padding-left: 3px;
+    padding-left: 11px;
 }
 
 @media screen and (max-width: 700px) {
-.actor_img{
-    height:150px;
-    width:100px;
-    }
     .actor_char{
         overflow: hidden;
         text-overflow: ellipsis;

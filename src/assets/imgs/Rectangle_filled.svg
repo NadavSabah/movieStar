@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="16px" height="18px" viewBox="0 0 16 18" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>Rectangle@2x</title>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Hompage" transform="translate(-134.000000, -923.000000)" fill="#FFFFFF" stroke="#FFFFFF" stroke-width="2">
+            <path d="M136,924 L148,924 C148.552285,924 149,924.447715 149,925 L149,938.770514 C149,939.322799 148.552285,939.770514 148,939.770514 C147.754781,939.770514 147.518109,939.680411 147.334974,939.517334 L142.665026,935.358856 C142.285933,935.021283 141.714067,935.021283 141.334974,935.358856 L136.665026,939.517334 C136.252568,939.884618 135.620463,939.847997 135.25318,939.43554 C135.090102,939.252405 135,939.015733 135,938.770514 L135,925 C135,924.447715 135.447715,924 136,924 Z" id="Rectangle"></path>
+        </g>
+    </g>
+</svg>

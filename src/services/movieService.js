@@ -10,7 +10,8 @@ export default {
     loadWatchList,
     addToRecentlyList,
     loadRecentlyList,
-    setIsDarkMode
+    setIsDarkMode,
+    numToDisplay,
 
 }
 const API = '5c90c388a02f4e1f5527d7ab55af038f'
@@ -157,6 +158,41 @@ async function setIsDarkMode(isDark) {
     console.log('res before return', res)
     return res
 
+}
+function numToDisplay(num) {
+    num = num.toString()
+    if (num.length === 5) {
+        num = num.substring(0, 2)
+        return `${num}K`
+    }
+    else if (num.length === 6) {
+        num = num.substring(0, 3)
+        return `${num}K`
+    }
+    else if (num.length === 7) {
+        num = num.substring(0, 1)
+        return `${num}M`
+    }
+    else if (num.length === 8) {
+        num = num.substring(0, 2)
+        return `${num}M`
+    }
+    else if (num.length === 9) {
+
+        console.log('the num is ', num)
+        num = num.substring(0, 3)
+        return `${num}M`
+    }
+    else if (num.length === 10) {
+
+        num = num.substring(0, 4)
+        return `${num}M`
+    }
+    else if (num.length === 11) {
+
+        num = num.substring(0, 1)
+        return `${num}B`
+    }
 }
 
 

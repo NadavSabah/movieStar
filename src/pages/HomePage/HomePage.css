@@ -2,11 +2,19 @@
     background-color: #dcdcdc;
 }
 .dark_bg{
-    background-color: #7a7a7a;
+    background-color:#7a7a7a
+
+    ;
 }
 .sub_title {
     width: 100%;
-    padding: 30px;
+    padding: 2vw;
+    padding-left: 5vw;
+    display: flex;
+    justify-content: flex-start;
+    padding-top: 5vh;
+    padding-bottom: 3vh;
+    font-size: 1.5em;
 }
 
 /* .light {
@@ -65,9 +73,9 @@
     }
 }
 
-@media screen and (max-width: 600px) {
+
+@media screen and (max-width: 383px) {
     .sub_title {
-        padding-left: 13px;
-        padding-top: 10px;
+        font-size: 1.1em;
     }
 }

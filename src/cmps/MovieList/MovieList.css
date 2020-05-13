@@ -2,11 +2,11 @@
     display: flex;
     overflow-x: auto;
     overflow-y: hidden;
-    padding: 20px 0;
+    padding-left: 5vw;
 }
 
 .movie_item {
-    margin: 5px;
+    margin-right: 15px;
     cursor: pointer;
     position: relative;
 }
@@ -20,8 +20,7 @@
 
 @media screen and (max-width: 600px) {
     .movies_container {
-        height: 330px;
-        padding: 0 10px;
+        height: 330px;    
     }
     
 }

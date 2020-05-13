@@ -2,14 +2,16 @@
     width: 167px;
     height: 250px;
     margin: 3px;
-    border-radius: 7px;
+    margin-bottom: 5px;
+    
+    border-radius: 2px;
 }
 .movie_shadow{
     box-shadow: 1px 1px 3px 0px black;
 }
 
 .movie_name {
-    padding: 6px 0;
+    padding: 0;
     width: 160px;
 }
 
@@ -61,10 +63,17 @@
 
    
 }
+.star_score{
+    display:flex;
+    align-items: center;
+}
+.rec_img{
+    position: relative;
+    bottom: -2px;
+}
 @media screen and (max-width: 600px) {
     .movie_name {
         width: 95%;
-        padding-bottom: 0;
         display: -webkit-box;
         -webkit-line-clamp: 3;
         -webkit-box-orient: vertical;
@@ -78,5 +87,7 @@
         width: 133px;
         height: 200px;
         margin: 0;
+        margin-bottom: 5px;
+        
     }
 }

@@ -1,8 +1,28 @@
 body {
-    font-family: 'Roboto Condensed', sans-serif;
-    background-color: #2d2d2d;
+    /* font-family: 'Roboto Condensed', sans-serif; */
+    background-color: #3e3e3e;
     color: white;
 }
+@font-face {
+    font-family: Futura;
+    src: local(Futura-Bold),
+      url(/path/to/Futura-Bold.woff2) format("woff2"),
+      url(/path/to/Futura-Bold.woff) format("woff"),
+      url(/path/to/Futura-Bold.ttf) format("truetype");
+    font-weight: bold;
+    font-style: normal;
+    font-stretch: normal;
+  }
+  @font-face {
+    font-family: HelveticaNeue;
+    src: local(HelveticaNeue-Medium),
+      url(/path/to/HelveticaNeue-Medium.woff2) format("woff2"),
+      url(/path/to/HelveticaNeue-Medium.woff) format("woff"),
+      url(/path/to/HelveticaNeue-Medium.ttf) format("truetype");
+    /* font-weight: 500;
+    font-style: normal;
+    font-stretch: normal; */
+  }
 a{
     text-decoration: none;
 }
@@ -70,39 +90,4 @@ color:black
 
 ::-webkit-scrollbar-thumb:hover {
     background: #555;
-}
-@media screen and (max-width: 600px) {
-   
-    #navbar a {
-        display: flex;
-        justify-content:space-between;
-    }
-    .arr_img{
-        display: block;
-    }
-     .item_name{
-        padding-right: 25px;
-    }    
-    
-    .main_nav_container {
-        padding: 8px 10px;
-    }
-
-    .menu{
-        display: block;
-        position: absolute;
-    right: 19px;
-    top: 9px;
-    cursor: pointer;
-    }
-    .main_nav_item {
-        width: 100%;
-        margin: 0 16px;
-        border-bottom: 1px solid #c7c6c6;
-    }
-    .logo_img {
-        height: 35px;
-        width: 35px;
-    }
-  
 }

@@ -3,31 +3,38 @@
     background-color: #1e1e1e;
 }
 
+.img_bg_wrapper{
+    background-color: black;
+}
 
 .geners_container {
     display: flex;
 }
 
 .info_container {
+    font-weight: 500;
     display: flex;
+    flex-direction: column;
+
 }
 
 .movie_title {
     margin-bottom: 1px;
     margin-top: 0;
     padding-top: 12px;
+    letter-spacing: -0.14px;
 }
 
 .side_data_container {
-    background-color: white;
-    color: black;
-    width: 150px;
-    position: absolute;
-    right: 0;
-    /* left: 0; */
-    bottom: 0;
-    border-radius: 5px;
-    padding: 14px;
+    display: flex;
+    position: relative;
+    bottom: 154px;
+    padding-left: 5vw;
+}
+.sub_data{
+    display: flex;
+    flex-direction: column;
+    padding-right: 6vw;
 }
 
 .imgs_container {
@@ -37,7 +44,7 @@
 .img_bg {
     width: 100%;
     height: 700px;
-    opacity: 0.3
+    
 }
 
 .img_card_wrapper {
@@ -52,10 +59,10 @@
 
 .overview_txt {
     background: transparent;
-    position: absolute;
+    /* position: absolute; */
     width: 50%;
     top: 20%;
-    padding-left: 20px;
+    padding-left: 5vw;
     padding-top:60px
 }
 
@@ -68,8 +75,6 @@
 }
 
 .trailers_container {
-    margin-top: 5%;
-    padding-bottom: 5%;
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
@@ -89,25 +94,49 @@
     overflow-x: auto;
     overflow-y: hidden;
     padding-bottom: 30px;
+    padding-left: 5vw;
 }
 
 .ml_title {
     padding: 30px;
 }
-.md_date_time_warapper{
+.md_date_time_wrapper{
   
     display: flex;
 
 }
+.movie_tagline{
+    margin: 2vw 0;
+}
+.img_star{
+padding-left: 0.5vw;
+}
+.desc_tit{
+    font-weight: bold;
+    letter-spacing: -0.11px;
+    display: flex;
+align-items: center;
+color:white;   
+justify-content: space-between;
+width: 95%; 
+font-size: 1.1em;
+}
 
-@media screen and (max-width: 700px) {
-    .side_data_container{
-        position:static;
-        border-radius: 0 5px 5px 0;
-        width: fit-content;
-        height: fit-content;
 
+
+    .desc_tit{
+        width:97%;
     }
+    .overview_wrapper{
+        background-color: black;
+    }
+    .sub_tit{
+        
+    color: #ffffff;
+    opacity: 0.7;
+    line-height: 1.56;
+    }
+
     .md_movie_img{
         width: 133px;
         height: 200px;
@@ -119,49 +148,48 @@
     border-bottom-left-radius: 5px;
     position: static;
     }
-    .data_img_container{
-        display: flex;
-        width: fit-content;
-        margin: 0 auto;
-        bottom: 0;
-        left: 12%
-
-    }
+ 
     .md_img_data{
         width:100%
     }
     .img_bg{
-        height:460px
+        background-color: black;
+        margin-top: 65px;
+    height: 403px;
+    width: 100%;
+    object-fit: cover;
     }
     .main_details{
-        width:97%;
-        padding-top:60px;
+        width: 100%;
+    padding-top: 60px;
+    height: 168px;
+    background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0), #000000);
+    position: relative;
+    bottom: 172px;
+    padding-left: 5vw;
 
     }
     .md_youtube{
-        width: 100%;
-        height:auto;
-        margin-bottom: 15px;
+        width: 90%;
+    border: none;
+    height: auto;
+    margin-bottom: 15px;
+    border-radius: 2px;
     }
     .cast_container {
      margin-top:0;
     }
-    .actor_wrapper{
-        height:225px
-    }
+ 
 
     .ml_title{
         padding: 13px;
     margin-bottom: 0;
     }
-    .geners_container {
-      font-size:0.8em
-    }
-    .md_date_time_warapper{
-        font-size: 0.8em;
-        display: flex;
-    padding-top: 3px;
-    }
+    /* .geners_container {
+    } */
+    /* .md_date_time_wrapper{
+       
+    } */
     .overview_txt{
         width: 91%;
         display: -webkit-box;
@@ -169,14 +197,34 @@
         -webkit-box-orient: vertical;
         text-overflow: ellipsis;
         overflow: hidden;
+        padding-top: 0;
+        position: relative;
+        bottom: 17vh;
+        
     }
     
     .info_container {
-        padding-top: 3px;
-        display: block;
+        font-size: 0.9em;
+        line-height: 1.56;
+       
     }
     .movie_title{
-        margin-bottom: 4px;
+        padding-bottom: 6px;
+    }
+    .languages{
+        display:flex;
+    }
+    .top_details{
+        display: flex;
+    flex-direction: row;
+    align-items: center;
     }
     
+    
+
+@media screen and (max-width: 365px) {
+    .info_container{
+        font-size: 4vw;
+    
+    }
 }

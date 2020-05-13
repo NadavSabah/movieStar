@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { connect } from 'react-redux'
 import { NavLink } from 'react-router-dom'
 import './MovieList.css'
@@ -8,6 +8,8 @@ import MoviePreview from '../MoviePreview/MoviePreview'
 const MovieList = ({ list, title, baseUrl, displaySizeCard, watchList, setAddWatchList, setDeleteWatchList, recentlyViewed, setIsSucMsg, isDark }) => {
     const [showWindow, setShowWindow] = useState(false)
     const [noteId, setNoteId] = useState(null)
+
+
 
     const closeNote = () => {
         console.log('closing')
@@ -42,13 +44,17 @@ const MovieList = ({ list, title, baseUrl, displaySizeCard, watchList, setAddWat
 
     }
 
+
+
     // remove and add to wathlist
     const handaleWatchList = (movie) => {
-        console.log('added/removed from watchlist')
+
+
         const index = watchList.findIndex(watch => {
             return watch.id === movie.id
         })
         if (index !== -1) {
+
             setDeleteWatchList(index, watchList)
             setIsSucMsg({ isShow: true, content: 'remove from' })
             setTimeout(() => {
@@ -78,11 +84,14 @@ const MovieList = ({ list, title, baseUrl, displaySizeCard, watchList, setAddWat
             {
                 list ?
                     list.map((movieData, idx) =>
+
+
                         <div key={idx} className='movie_item'>
 
                             {movieData.poster_path ?
-                                <div>
-                                    {noteId === movieData.id ?
+                                <div  >
+
+                                    {/* {noteId === movieData.id ?
                                         <div className={"movie_note" + (showWindow ? "" : " movie_note_hide")}>
 
                                             <div onClick={(e) => { handleOptPicked(e, movieData) }} className="movie_note_single">Add to watchlist</div>
@@ -91,8 +100,13 @@ const MovieList = ({ list, title, baseUrl, displaySizeCard, watchList, setAddWat
                                             </NavLink>
                                         </div>
                                         : null
-                                    }
-                                    <MoviePreview handleNoteOpen={handleNoteOpen} handaleWatchList={handaleWatchList} imgUrl={`${baseUrl}${displaySizeCard}${movieData.poster_path}`} data={movieData} recentlylist={recentlyViewed} />
+                                    } */}
+                                    <MoviePreview handaleWatchList={handaleWatchList}
+                                        watchList={watchList}
+                                        handleNoteOpen={handleNoteOpen}
+                                        handaleWatchList={handaleWatchList}
+                                        recentlylist={recentlyViewed}
+                                        imgUrl={`${baseUrl}${displaySizeCard}${movieData.poster_path}`} data={movieData} />
                                 </div>
                                 : null
                             }
