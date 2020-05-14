@@ -3,37 +3,27 @@
     text-align: center;
     padding: 25px;
 }
-.input_wrapper{
-    
-    width: 80%;
-    margin:0 auto;
-    background-image: url('../../assets/imgs/bgimageTop.jpg');
-    background-position: center;
-    background-repeat: no-repeat;
-    display: flex;
-    flex-direction: column-reverse;
-    height: 550px;
-    
-    
-}
+
 
 .user_input{
     height: 55px;
-    border-radius: 2px;
+ 
+    border-top-left-radius: 2px;
+    border-bottom-right-radius: 2px;
     border: none;
     padding: 9px;
-    width:60vw;
+    width: 60vw;
 }
 .input_btn{
     width: 55px;
-    height:55px;
-    border-radius:2px;
+    height: 55px;
+    border-radius: 2px;
     border-top-left-radius: 0;
     border-bottom-left-radius: 0;
     position: relative;
     right: 2px;
     border: none;
-    top:5px ;
+    top: 5px;
     background: #f5c518;
 }
 
@@ -46,10 +36,28 @@
     width: 520px;
     color:#f4f4f4;
 }
-@media screen and (max-width: 1670px) {
-.input_wrapper{width:100%;}
+.input_wrapper{
+    height:50vw;
+    width: 100%;
+    margin:0 auto;
+    background-repeat: no-repeat;
+    display: flex;
+    flex-direction: column-reverse;    
+    background-image: url('../../assets/imgs/theatre.jpg');
+    background-size: cover;
+    background-position: top;
+}
+@media screen and (max-width: 1000px) {
+.input_wrapper{
+    height:500px
+}
 }
 @media screen and (max-width: 600px) {
+    .input_wrapper{
+        background-image: url('../../assets/imgs/newBg@2x.png');
+        background-size: cover;
+        background-position: top;
+    }
    .user_input{
     width: 70%;
    }

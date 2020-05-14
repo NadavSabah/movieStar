@@ -41,11 +41,7 @@
     position: relative;
 }
 
-.img_bg {
-    width: 100%;
-    height: 700px;
-    
-}
+
 
 .img_card_wrapper {
     position: absolute;
@@ -153,9 +149,9 @@ font-size: 1.1em;
         width:100%
     }
     .img_bg{
-        background-color: black;
-        margin-top: 65px;
-    height: 403px;
+    background-color: black;
+    margin-top: 65px;
+    height: 50vw;
     width: 100%;
     object-fit: cover;
     }
@@ -219,6 +215,9 @@ font-size: 1.1em;
     flex-direction: row;
     align-items: center;
     }
+    .html5-video-player{
+    direction: ltr;
+    }
     
     
 
@@ -226,5 +225,10 @@ font-size: 1.1em;
     .info_container{
         font-size: 4vw;
     
+    }
+}
+@media screen and (max-width: 600px) {
+    .img_bg{
+        height: 350px;
     }
 }

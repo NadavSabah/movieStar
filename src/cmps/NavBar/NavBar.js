@@ -14,16 +14,22 @@ const NavBar = ({ isOpen, setIsOpen, setDarkMode, isDark }) => {
     //     checkbox.checked = isDark
 
     // }, [])
+
+    // playing with the navbar depending on screen width and scrolling
     let prevScrollpos = window.pageYOffset;
     window.onscroll = function () {
         let currentScrollPos = window.pageYOffset;
         let element = document.getElementById("navbar")
+        let blackStarMenu = document.getElementsByClassName("black_star")
+        let logoImg = document.getElementsByClassName("logo_img")
+        let menuNames = document.getElementsByClassName("main_nav_items")
         if (prevScrollpos > currentScrollPos) {
             if (currentScrollPos <= 75) {
                 element.style.backgroundColor = 'transparent'
                 element.style.top = "2%";
-                document.getElementsByClassName("black_star")[0].style.display = "none"
-                document.getElementsByClassName("logo_img")[0].style.display = "block"
+                blackStarMenu[0].style.display = "none"
+                logoImg[0].style.display = "block"
+                menuNames[0].style.padding = "0px"
 
                 element.classList.remove("yellow_nav");
             }
@@ -31,15 +37,26 @@ const NavBar = ({ isOpen, setIsOpen, setDarkMode, isDark }) => {
                 element.style.top = "0";
                 element.style.backgroundColor = '#f5c518'
                 element.style.display = "flex"
-                // console.log('blabla', document.getElementsByClassName("black_star"))
-                document.getElementsByClassName("black_star")[0].style.display = "block"
-                document.getElementsByClassName("logo_img")[0].style.display = "none"
+                if (window.innerWidth > 600) {
+                    console.log('window.innerWidth', window.innerWidth)
+                    blackStarMenu = "none"
+                    menuNames[0].style.paddingTop = "8px"
+                    logoImg[0].style.display = "none"
+                }
+                else {
+                    console.log('in the else')
+                    console.log('window.innerWidth', window.innerWidth)
+
+                    blackStarMenu[0].style.display = "block"
+                    logoImg[0].style.display = "none"
+                }
+
                 element.classList.add("yellow_nav");
             }
 
         } else {
             element.style.top = "-60px";
-            document.getElementsByClassName("black_star")[0].style.display = "none"
+            blackStarMenu[0].style.display = "none"
 
 
 
