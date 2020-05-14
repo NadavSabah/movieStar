@@ -23,7 +23,7 @@ const NavBar = ({ isOpen, setIsOpen, setDarkMode, isDark }) => {
         let blackStarMenu = document.getElementsByClassName("black_star")
         let logoImg = document.getElementsByClassName("logo_img")
         let menuNames = document.getElementsByClassName("main_nav_items")
-        if (prevScrollpos > currentScrollPos) {
+        if (prevScrollpos > currentScrollPos || currentScrollPos === 0) {
             if (currentScrollPos <= 75) {
                 element.style.backgroundColor = 'transparent'
                 element.style.top = "2%";
