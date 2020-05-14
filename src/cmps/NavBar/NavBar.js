@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import { BrowserRouter as Router, Route, NavLink, Link, Switch } from 'react-router-dom'
 import './NavBar.css'
-import icon from './../../assets/imgs/icon_yellow.png'
+import icon from './../../assets/imgs/icon_yellow.svg'
 import menu from './../../assets/imgs/menu.svg'
-import arrow from './../../assets/imgs/rightArrow.svg'
 import star_black from './../../assets/imgs/star_black.svg'
 import star from './../../assets/imgs/star.svg'
 

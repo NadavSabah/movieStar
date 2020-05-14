@@ -9,10 +9,11 @@
     height: 55px;
  
     border-top-left-radius: 2px;
-    border-bottom-right-radius: 2px;
+    border-bottom-left-radius: 2px;
     border: none;
     padding: 9px;
     width: 60vw;
+    font-size: 1.1em;
 }
 .input_btn{
     width: 55px;

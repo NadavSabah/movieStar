@@ -74,7 +74,7 @@ const MovieList = ({ list, title, baseUrl, displaySizeCard, watchList, setAddWat
 
     return (<div onClick={closeNote} className="list_container">
         {title ?
-            <h1 className="sub_title">{title}</h1>
+            <h2 className="sub_title">{title}</h2>
             : null
         }
         < div className='movies_container'  >
@@ -91,16 +91,7 @@ const MovieList = ({ list, title, baseUrl, displaySizeCard, watchList, setAddWat
                             {movieData.poster_path ?
                                 <div  >
 
-                                    {/* {noteId === movieData.id ?
-                                        <div className={"movie_note" + (showWindow ? "" : " movie_note_hide")}>
 
-                                            <div onClick={(e) => { handleOptPicked(e, movieData) }} className="movie_note_single">Add to watchlist</div>
-                                            <NavLink to={'/' + movieData.id}>
-                                                <div className="movie_note_single">Movie details</div>
-                                            </NavLink>
-                                        </div>
-                                        : null
-                                    } */}
                                     <MoviePreview handaleWatchList={handaleWatchList}
                                         watchList={watchList}
                                         handleNoteOpen={handleNoteOpen}
