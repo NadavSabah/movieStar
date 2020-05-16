@@ -3,12 +3,18 @@
     overflow-x: auto;
     overflow-y: hidden;
     padding-left: 5vw;
+    height: fit-content;
+}
+.more_like_wrapper{
+    padding-bottom: 3vw;
+    margin-bottom: 3vw;
 }
 
 .movie_item {
     margin-right: 15px;
     cursor: pointer;
     position: relative;
+    width: min-content;
 }
 
 
@@ -18,9 +24,3 @@
     top: 44px;
 }
 
-@media screen and (max-width: 600px) {
-    .movies_container {
-        height: 330px;    
-    }
-    
-}

@@ -1,37 +1,34 @@
-.container_form{
-    position: relative;
-    text-align: center;
-    padding: 25px;
-}
+
+    .container_form {
+        padding: 25px 5vw;
+    }
+
 
 
 .user_input{
     height: 55px;
- 
+    width: calc(100% - 55px);
     border-top-left-radius: 2px;
     border-bottom-left-radius: 2px;
     border: none;
-    padding: 9px;
-    width: 60vw;
+    padding-left: 4vh;
     font-size: 1.1em;
 }
 .input_btn{
     width: 55px;
     height: 55px;
-    border-radius: 2px;
-    border-top-left-radius: 0;
-    border-bottom-left-radius: 0;
+    border-top-right-radius: 2px;
+    border-bottom-right-radius: 2px;
     position: relative;
-    right: 2px;
     border: none;
-    top: 5px;
     background: #f5c518;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 
 .bg_img_txt{
-    margin-bottom: 50px;
-    margin-left: 27px;
     font-weight: bold;
     font-size: 2em;
     width: 520px;
@@ -46,7 +43,14 @@
     flex-direction: column-reverse;    
     background-image: url('../../assets/imgs/theatre.jpg');
     background-size: cover;
-    background-position: top;
+    background-position: bottom;
+}
+.input_field{
+    display: flex;
+}
+.bg_txt_wrapper{
+    width: 100%;
+    padding-left: 5vw;
 }
 @media screen and (max-width: 1000px) {
 .input_wrapper{
@@ -54,35 +58,29 @@
 }
 }
 @media screen and (max-width: 600px) {
+
+    .bg_img_txt{
+        font-size: 1.5em;
+        width: 85%;
+        color: #fffdf8;
+        margin-left: 0;
+        margin-bottom: 0;
+    }
+ 
     .input_wrapper{
         background-image: url('../../assets/imgs/newBg@2x.png');
         background-size: cover;
         background-position: top;
     }
    .user_input{
-    width: 70%;
+    width: 82vw;
    }
 
-   .container_form{
-    padding-top: 25px;
-    padding-bottom: 30px;
-   }
-   .bg_img_txt{
-       font-size: 1.8em;
-       margin-bottom: 32px;
-       margin-left: 15px;
-       width:auto
-   }
   }
-  @media screen and (max-width: 320px) {
-    .bg_img_txt{
-        font-size: 2.2em;
-    }
-  }
+
+ 
   @media screen and (max-width: 383px) {
-    .input_btn{
-        top:0;
-    }
+   
     .input_wrapper{
         margin:0 auto;
         background-image: url('../../assets/imgs/newBg.png');
@@ -93,30 +91,10 @@
         height: 550px;
         
     }
-    .bg_img_txt{
-        font-size: 1.5em;
-        width: 90%;
-        padding:0 5%;
-        letter-spacing: -0.14px;
-        color: #fffdf8;
-        margin-left: 0;
-        margin-bottom: 0;
-    }
-    .bg_txt_wrapper{
-        width: 100%;
-        margin: 0 5%;
-    }
-    .container_form {
-        position: relative;
-        text-align: center;
-        padding: 25px 0;
-        width: 100%;
-    }
-    .input_field{
-        display: flex;
-    justify-content: center;
-    margin: 0px 5%;
-    }
+
+
+  
+ 
 
 
   }

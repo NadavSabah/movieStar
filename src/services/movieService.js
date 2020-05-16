@@ -178,13 +178,10 @@ function numToDisplay(num) {
         return `${num}M`
     }
     else if (num.length === 9) {
-
-        console.log('the num is ', num)
         num = num.substring(0, 3)
         return `${num}M`
     }
     else if (num.length === 10) {
-
         num = num.substring(0, 4)
         return `${num}M`
     }

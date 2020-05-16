@@ -7,10 +7,9 @@ import empty_rec from './../../assets/imgs/Rectangle_empty.svg'
 import filled_rec from './../../assets/imgs/Rectangle_filled.svg'
 import './MoviePreview.css'
 
-import dots from '../../assets/imgs/3dots.svg'
 
 
-const MoviePreview = ({ imgUrl, data, setCurrMovie, recentlylist, handleNoteOpen, isDark, watchList, handaleWatchList }) => {
+const MoviePreview = ({ imgUrl, data, setCurrMovie, recentlylist, isDark, watchList, handaleWatchList }) => {
     const [isInWatchList, setIsInWatchList] = useState(false)
 
     useEffect(() => {
@@ -36,10 +35,6 @@ const MoviePreview = ({ imgUrl, data, setCurrMovie, recentlylist, handleNoteOpen
     }
     return (
         <div >
-            {/* <div className='add_wl_btn' onClick={(e) => handleNoteOpen(e, data)}>
-                <img src={dots} />
-            </div> */}
-
             <NavLink className="mp_link" to={'/' + data.id}>
                 <div className='movie_card' onClick={onSetCurrMovie}>
                     <img className={"movie_img" + (isDark ? "" : " movie_shadow")} src={imgUrl} />

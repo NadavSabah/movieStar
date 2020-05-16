@@ -13,6 +13,11 @@
 .movie_name {
     padding: 0;
     width: 160px;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    text-overflow: ellipsis;
+    overflow: hidden;
 }
 
 .movie_card:hover {
@@ -74,11 +79,7 @@
 @media screen and (max-width: 600px) {
     .movie_name {
         width: 95%;
-        display: -webkit-box;
-        -webkit-line-clamp: 3;
-        -webkit-box-orient: vertical;
-        text-overflow: ellipsis;
-        overflow: hidden;
+       
         }
     .movie_card {
         width: 131px;

@@ -1,22 +1,28 @@
-#navbar {
+.navbar {
     width: 100%;
-    padding: 8px 100px;
     display: block;
     z-index: 1;
   transition: top 0.3s;
   position: fixed;
   top:0;    
 } 
-#navbar a {
+.navbar a {
     display: flex;
     justify-content: center; 
     font-size: 1.2em;
     width: 100%;   
   }
+  .main_nav_container{
+    position: relative;
+  }
   .yellow_nav{
-    top: 0px;
-    display: flex;
-    justify-content: center;    
+    position: fixed;
+    height: 55px;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    z-index:1
   }
   
   .black_star{
@@ -24,9 +30,7 @@
     display: none;
   }
 
-.main_nav_container {
-    padding: 8px 10px;
-}
+
 .logo_app {
     width: 40px;
     height: 40px;
@@ -43,21 +47,25 @@
     transition: top 0.3s;
 }
 .main_nav_item {
-    display: inline-block;
-    margin: 0 16px;
-    color: white;
+  display: inline-block;
+  color: white;
+  padding-bottom: 10vw;
 }
 .logo_img {
-    height: 3.2vh;
-    width: auto;
-    position: absolute;
-   
+  height: 3vh;
+  width: 42vw;
+  position: absolute;
+  left: 5.54vw;
+  top: 4.5vw;
+  z-index: 1;
 }
+   
+
 .item_name {
-    text-decoration: none;
-    color: white;
-    font-weight: bold;
-    padding: 3vh 0;
+  text-decoration: none;
+  color: white;
+  font-weight: bold;
+  font-size: 1.5em;    
 }
 
 
@@ -71,17 +79,9 @@
 }
 
 .img_moon{
-    /* position: absolute;
-    top: 2px;
-    right: -34px; */
+ 
     transform: rotate(31deg);
 }
-/* .img_sun{
-  
-    position: absolute;
-    left: -33px;
-    top: 2px;
-} */
 
 .dark_mode{
     transform: translate(-50px, -19px);
@@ -147,7 +147,7 @@
 
 
 @media screen and (max-width: 600px) {
-  #navbar a {
+  .navbar a {
     font-size:1.5em
   }
     .in_menu_star{
@@ -163,13 +163,13 @@
         width: 30vw;
     }
     .menu{
-    display: block;
-    position: absolute;
-    right: 19px;
-    top: 9px;
-    height:3vh;
-    cursor: pointer;
-    padding-right: 30px;
+      display: block;
+      position: absolute;
+      right: 5.5vw;
+      top: 4.5vw;
+      height: 3vh;
+      cursor: pointer;
+      z-index: 1;
     }
     .main_nav_items{
         margin: 0;
@@ -187,9 +187,7 @@
         flex-direction: column;
         transition: width 300ms linear;
         }
-    .main_nav_item {
-        width: 100%;
-    }
+
 
     .width_nav{
         width: 100%;
@@ -221,24 +219,18 @@
         margin-right: 3px;
         position:static;
     }
-    #navbar{
+    .navbar{
         background: transparent;
-        padding: 8px 15vw;
         top: 2%;   
     }
 }
 
 
 @media screen and (max-width: 383px) {
-    #navbar{
-        padding: 8px 16px;
-    }
     .logo_img {
         height:3vh;
         width: 42vw;
-            position: static;
-            margin-left: 27vw;
-
+  
         }
         
     

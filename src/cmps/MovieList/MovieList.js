@@ -78,9 +78,7 @@ const MovieList = ({ list, title, baseUrl, displaySizeCard, watchList, setAddWat
             : null
         }
         < div className='movies_container'  >
-            <div>
 
-            </div>
             {
                 list ?
                     list.map((movieData, idx) =>
@@ -89,16 +87,14 @@ const MovieList = ({ list, title, baseUrl, displaySizeCard, watchList, setAddWat
                         <div key={idx} className='movie_item'>
 
                             {movieData.poster_path ?
-                                <div  >
-
-
+                                <>
                                     <MoviePreview handaleWatchList={handaleWatchList}
                                         watchList={watchList}
                                         handleNoteOpen={handleNoteOpen}
                                         handaleWatchList={handaleWatchList}
                                         recentlylist={recentlyViewed}
                                         imgUrl={`${baseUrl}${displaySizeCard}${movieData.poster_path}`} data={movieData} />
-                                </div>
+                                </>
                                 : null
                             }
                         </div>

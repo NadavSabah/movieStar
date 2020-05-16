@@ -5,31 +5,28 @@
 
 .img_bg_wrapper{
     background-color: black;
+    position: relative;
 }
 
 .geners_container {
     display: flex;
 }
 
-.info_container {
-    font-weight: 500;
-    display: flex;
-    flex-direction: column;
-
-}
 
 .movie_title {
+    font-size: 1.5em;
+    padding-bottom: 6px;
     margin-bottom: 1px;
     margin-top: 0;
     padding-top: 12px;
     letter-spacing: -0.14px;
 }
 
+
 .side_data_container {
     display: flex;
-    position: relative;
-    bottom: 154px;
     padding-left: 5vw;
+    padding-top: 4vh;
 }
 .sub_data{
     display: flex;
@@ -38,7 +35,7 @@
 }
 
 .imgs_container {
-    position: relative;
+   background-color: black;
 }
 
 
@@ -51,23 +48,6 @@
 
 .img_card {
     height: 360px
-}
-
-.overview_txt {
-    background: transparent;
-    /* position: absolute; */
-    width: 50%;
-    top: 20%;
-    padding-left: 5vw;
-    padding-top:60px
-}
-
-.main_details {
-    background: transparent;
-    position: absolute;
-    width: 50%;
-    padding-left: 20px;
-    padding-top: 60px;
 }
 
 .trailers_container {
@@ -86,7 +66,7 @@
 
 .cast_container {
     display: flex;
-    margin: 25px 1px;
+   margin: 0;
     overflow-x: auto;
     overflow-y: hidden;
     padding-bottom: 30px;
@@ -102,7 +82,8 @@
 
 }
 .movie_tagline{
-    margin: 2vw 0;
+        margin: 0;
+    margin-bottom: 1vw;
 }
 .img_star{
 padding-left: 0.5vw;
@@ -157,12 +138,13 @@ font-size: 1.1em;
     }
     .main_details{
         width: 100%;
-    padding-top: 60px;
-    height: 168px;
-    background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0), #000000);
-    position: relative;
-    bottom: 172px;
-    padding-left: 5vw;
+        background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0), #000000);
+        position: absolute;
+        bottom: 0;
+        padding-left: 5vw;
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
 
     }
     .md_youtube{
@@ -172,48 +154,37 @@ font-size: 1.1em;
     margin-bottom: 15px;
     border-radius: 2px;
     }
-    .cast_container {
-     margin-top:0;
-    }
+ 
  
 
     .ml_title{
         padding: 13px;
     margin-bottom: 0;
     }
-    /* .geners_container {
-    } */
-    /* .md_date_time_wrapper{
-       
-    } */
+
     .overview_txt{
+        background: transparent;
+        padding-left: 5vw;
         width: 91%;
         display: -webkit-box;
         -webkit-line-clamp: 12;
         -webkit-box-orient: vertical;
         text-overflow: ellipsis;
         overflow: hidden;
-        padding-top: 0;
-        position: relative;
-        bottom: 17vh;
-        
     }
     
     .info_container {
         font-size: 0.9em;
         line-height: 1.56;
-       
+        font-weight: 500;
     }
-    .movie_title{
-        padding-bottom: 6px;
-    }
+   
     .languages{
         display:flex;
     }
     .top_details{
         display: flex;
     flex-direction: row;
-    align-items: center;
     }
     .html5-video-player{
     direction: ltr;
@@ -227,8 +198,21 @@ font-size: 1.1em;
     
     }
 }
+@media screen and (max-width: 335px) {
+   .side_data_container{
+       font-size:0.8em;
+   }
+}
 @media screen and (max-width: 600px) {
+    .movie_title{
+        font-size: 1em;
+        width:95%;
+    }
     .img_bg{
         height: 350px;
     }
+    .splitLines{
+        flex-direction: column;
+    }
+   
 }
