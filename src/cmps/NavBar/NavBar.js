@@ -4,10 +4,11 @@ import './NavBar.css'
 import icon from './../../assets/imgs/icon_yellow.svg'
 import menu from './../../assets/imgs/menu.svg'
 import star_black from './../../assets/imgs/star_black.svg'
-import star from './../../assets/imgs/star.svg'
+import open from './../../assets/imgs/star.svg'
+import close from './../../assets/imgs/close_menu.svg'
 
 
-const NavBar = ({ isOpen, setIsOpen, setDarkMode, isDark }) => {
+const NavBar = ({ isOpen, setIsOpen }) => {
     useEffect(() => {
         // let checkbox = document.querySelector('input[type="checkbox"]');
         // checkbox.checked = isDark
@@ -22,7 +23,6 @@ const NavBar = ({ isOpen, setIsOpen, setDarkMode, isDark }) => {
     let prevScrollpos = window.pageYOffset;
     let element = document.getElementById("navbar")
     let blackStarMenu = document.getElementsByClassName("black_star")
-    console.log('blackStarMenu', blackStarMenu)
     let logoImg = document.getElementsByClassName("logo_img")
     let menuNames = document.getElementsByClassName("main_nav_items")
 
@@ -70,11 +70,19 @@ const NavBar = ({ isOpen, setIsOpen, setDarkMode, isDark }) => {
     }
     const toggleMenu = () => {
         setIsOpen(!isOpen)
+        let menu = document.getElementById("menu")
+        if (isOpen) {
+            menu.style.opacity = "0"
+            setTimeout(() => {
+                menu.style.visibility = "hidden"
+            }, 1000)
+        }
+        else {
+            menu.style.opacity = "1"
+            menu.style.visibility = "visible"
+        }
     }
-    // const handleOnChange = (event) => {
-    //     let checkbox = document.querySelector('input[type="checkbox"]');
-    //     setDarkMode(!checkbox.checked)
-    // }
+
     return (
         <header id="navbar" className="main_nav_container">
 
@@ -85,31 +93,26 @@ const NavBar = ({ isOpen, setIsOpen, setDarkMode, isDark }) => {
             </div>
 
 
-            <ul className={"main_nav_items main_nav" + (isOpen ? " width_nav" : "")}  >
-                {/* <li className="main_nav_item dark_mode  ">
-                        <img className="img_moon" src={moon} />
-                        <label className="switch">
-                            <input onChange={(e) => handleOnChange(e)} type="checkbox" />
-                            <span className="slider round"></span>
-                        </label>
-                        <img className="img_sun" src={sun} />
-                    </li> */}
-                <li onClick={toggleMenu} >  <img className={"in_menu_star"} src={star} /></li>
+            {/* <ul id ="menu" className={"main_nav_items main_nav" + (isOpen ? " width_nav" : "")}  > */}
+            <ul id="menu" className={"main_nav_items main_nav width_nav"}  >
+
+                <li onClick={toggleMenu} >  <img className={"in_menu_star menu_btn"} src={open} /></li>
                 <li className="main_nav_item">
-                    <NavLink onClick={() => setIsOpen(false)} className="item_name" exact to="/">HOME
+                    <NavLink onClick={toggleMenu} className="item_name" exact to="/">HOME
                         </NavLink>
                 </li>
                 <li className="main_nav_item">
-                    <NavLink onClick={() => setIsOpen(false)} className="item_name" to="/WatchList">WATCH LIST
+                    <NavLink onClick={toggleMenu} className="item_name" to="/WatchList">WATCH LIST
                         </NavLink>
                 </li>
                 <li className="main_nav_item">
-                    <NavLink onClick={() => setIsOpen(false)} className="item_name" to="/AboutUs">ABOUT
+                    <NavLink onClick={toggleMenu} className="item_name" to="/AboutUs">ABOUT
                         </NavLink>
                 </li>
+                <li onClick={toggleMenu}>  <img className="in_menu_close menu_btn" src={close} /></li>
             </ul>
 
-            <Link onClick={() => setIsOpen(false)} exact to="/"><img className="logo_img" src={icon} /></Link>
+            <Link exact to="/"><img className="logo_img" src={icon} /></Link>
 
 
         </header>
