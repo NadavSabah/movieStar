@@ -11,7 +11,7 @@ import yellow_star from './../../assets/imgs/star.svg'
 const API = '5c90c388a02f4e1f5527d7ab55af038f'
 
 const HomePage = ({ inputResults, setConfigForFetch, setPopularList, popularList, setUpcomingList,
-    upcomingList, recentlyViewed, loadRecentlyList, getLastSearch, isDark }) => {
+    upcomingList, recentlyViewed, loadRecentlyList, getLastSearch }) => {
     const [userInput, setUserInput] = useState('')
 
     useEffect(
@@ -53,7 +53,7 @@ const HomePage = ({ inputResults, setConfigForFetch, setPopularList, popularList
 
             <UserInput inputResult={inputResult} />
             {inputResults ?
-                <div className={(isDark ? "dark_bg" : "bright_bg")}>
+                <div className="dark_bg">
                     {inputResults ?
                         <MovieList title={'SEARCH RESULT'} list={inputResults} />
                         : null
@@ -66,11 +66,8 @@ const HomePage = ({ inputResults, setConfigForFetch, setPopularList, popularList
                 : null
             }
             <div className="light">
-
-
                 {upcomingList ?
-                    <div className={isDark ? "dark_bg" : "bright_bg"}>
-
+                    <div className="dark_bg">
                         <MovieList list={upcomingList} title={'COMING SOON'} />
                     </div>
                     : null
@@ -109,7 +106,7 @@ const mapStateToProps = state => {
         upcomingList: state.upcomingList,
         watchList: state.watchList,
         recentlyViewed: state.recentlyViewed,
-        isDark: state.isDark
+
     }
 }
 const mapDIspatchToProps = dispatch => {

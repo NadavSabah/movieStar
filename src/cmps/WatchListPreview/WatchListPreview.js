@@ -6,7 +6,7 @@ import './WatchListPreview.css'
 import img from '../../assets/imgs/remove.svg'
 import img1 from '../../assets/imgs/filled_remove.svg'
 
-const WatchListPreview = ({ imgUrl, data, setCurrMovie, watchList, setDeleteWatchList, isDark }) => {
+const WatchListPreview = ({ imgUrl, data, setCurrMovie, watchList, setDeleteWatchList }) => {
 
     const onSetCurrMovie = () => {
         setCurrMovie(data.id)
@@ -22,7 +22,7 @@ const WatchListPreview = ({ imgUrl, data, setCurrMovie, watchList, setDeleteWatc
     }
     return (
 
-        <div className={'wl_container' + (isDark ? "" : " bright_shadow")} onClick={onSetCurrMovie}>
+        <div className={'wl_container'} onClick={onSetCurrMovie}>
             <Link className="mp_wl_link" to={'/' + data.id}>
 
                 <div className="wl_content">
@@ -43,11 +43,7 @@ const WatchListPreview = ({ imgUrl, data, setCurrMovie, watchList, setDeleteWatc
 
     )
 }
-const mapStateToProps = state => {
-    return {
-        isDark: state.isDark
-    }
-}
+
 const mapDispatchToProps = dispatch => {
     return {
 
@@ -61,4 +57,4 @@ const mapDispatchToProps = dispatch => {
         }
     }
 }
-export default connect(mapStateToProps, mapDispatchToProps)(WatchListPreview)
+export default connect(null, mapDispatchToProps)(WatchListPreview)

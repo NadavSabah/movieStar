@@ -10,7 +10,6 @@ export default {
     loadWatchList,
     addToRecentlyList,
     loadRecentlyList,
-    setIsDarkMode,
     numToDisplay,
 
 }
@@ -141,24 +140,7 @@ function loadRecentlyList() {
 
 }
 
-async function setIsDarkMode(isDark) {
-    console.log('movieService isDark:', isDark)
-    let res;
-    // console.log('isDark is', isDark)
-    if (isDark === false || isDark === true) {
-        localStorage.setItem('DarkMode', JSON.stringify(isDark))
-        res = isDark
-    }
-    else {
-        // console.log('in the else isDark:', isDark)
-        res = await localStorage.getItem('DarkMode')
 
-    }
-
-    console.log('res before return', res)
-    return res
-
-}
 function numToDisplay(num) {
     num = num.toString()
     if (num.length === 5) {

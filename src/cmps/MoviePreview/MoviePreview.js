@@ -9,7 +9,7 @@ import './MoviePreview.css'
 
 
 
-const MoviePreview = ({ imgUrl, data, setCurrMovie, recentlylist, isDark, watchList, handaleWatchList }) => {
+const MoviePreview = ({ imgUrl, data, setCurrMovie, recentlylist, watchList, handaleWatchList }) => {
     const [isInWatchList, setIsInWatchList] = useState(false)
 
     useEffect(() => {
@@ -37,7 +37,7 @@ const MoviePreview = ({ imgUrl, data, setCurrMovie, recentlylist, isDark, watchL
         <div >
             <NavLink className="mp_link" to={'/' + data.id}>
                 <div className='movie_card' onClick={onSetCurrMovie}>
-                    <img className={"movie_img" + (isDark ? "" : " movie_shadow")} src={imgUrl} />
+                    <img className="movie_img" src={imgUrl} />
                 </div>
             </NavLink>
             <div className="desc_tit">
@@ -50,7 +50,7 @@ const MoviePreview = ({ imgUrl, data, setCurrMovie, recentlylist, isDark, watchL
                         : <img src={empty_rec} />}
                 </div>
             </div>
-            <div className={'movie_name' + (isDark ? " bright_txt" : " dark_txt")}>{data.title}</div>
+            <div className={"movie_name bright_txt"}>{data.title}</div>
         </div>
 
     )
@@ -58,7 +58,6 @@ const MoviePreview = ({ imgUrl, data, setCurrMovie, recentlylist, isDark, watchL
 const mapStateToProps = state => {
     return {
         showNote: state.showNote,
-        isDark: state.isDark
     }
 }
 const mapDispatchToProps = dispatch => {

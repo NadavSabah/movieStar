@@ -10,10 +10,7 @@ import close from './../../assets/imgs/close_menu.svg'
 
 const NavBar = ({ isOpen, setIsOpen }) => {
     useEffect(() => {
-        // let checkbox = document.querySelector('input[type="checkbox"]');
-        // checkbox.checked = isDark
         setTopMenu()
-
     }, [])
 
     // playing with the navbar depending on screen width and scrolling

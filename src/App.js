@@ -11,21 +11,9 @@ import check from './assets/imgs/check.svg'
 import { connect } from 'react-redux'
 import NavBar from './cmps/NavBar/NavBar'
 
-function App({ msg, setDarkMode, isDark }) {
+function App({ msg }) {
 
-  useEffect(() => {
 
-    if (isDark) {
-      document.body.style.backgroundColor = "#2d2d2d"
-      document.body.style.color = "white";
-    }
-    else {
-      document.body.style.backgroundColor = "#f5f5f5";
-      document.body.style.color = "black";
-
-    }
-  }
-    , [isDark])
 
   const [isOpen, setIsOpen] = useState(false)
 
@@ -36,7 +24,7 @@ function App({ msg, setDarkMode, isDark }) {
 
     <Router className="router" >
       <div ref={node}>
-        <NavBar isDark={isDark} setDarkMode={setDarkMode} isOpen={isOpen} setIsOpen={setIsOpen} />
+        <NavBar isOpen={isOpen} setIsOpen={setIsOpen} />
       </div>
 
       {msg.isShow ?
@@ -57,21 +45,13 @@ function App({ msg, setDarkMode, isDark }) {
   );
 }
 
-const mapDispatchToProps = dispatch => {
-  return {
-    setDarkMode: async (isDark) => {
-      const resIsDark = await movieService.setIsDarkMode(isDark)
-      dispatch({ type: 'SET_DARK_MODE', data: resIsDark })
-      // return resIsDark
-    }
-  }
-}
+
 const mapStaeToProps = state => {
   return {
     msg: state.isShowSucMsg,
-    isDark: state.isDark
+
 
   }
 }
 
-export default connect(mapStaeToProps, mapDispatchToProps)(App);
+export default connect(mapStaeToProps, null)(App);

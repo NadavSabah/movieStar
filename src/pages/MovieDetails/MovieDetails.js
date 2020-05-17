@@ -8,7 +8,7 @@ import MovieList from '../../cmps/MovieList/MovieList'
 import star from '../../assets/imgs/star.svg'
 
 const MovieDetails = ({ history, movie, baseUrl, displaySizeBg, displaySizeCard, setCurrMovie, setConfigForFetch,
-    recs, recentlyViewed, addToRecentlyList, isDark }) => {
+    recs, recentlyViewed, addToRecentlyList }) => {
     let [titlefontSize, setTitleFontSize] = useState('1.5em')
     let [manyGenres, setManyGenres] = useState(false)
     useEffect(() => {
@@ -183,9 +183,6 @@ const mapStateToProps = state => {
         displaySizeCard: state.displaySizeCard,
         displaySizeBg: state.displaySizeBg,
         recentlyViewed: state.recentlyViewed,
-        isDark: state.isDark,
-
-
     }
 }
 const mapDispatchToProps = dispatch => {
