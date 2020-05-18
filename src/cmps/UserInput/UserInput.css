@@ -3,8 +3,6 @@
         padding: 25px 5vw;
     }
 
-
-
 .user_input{
     height: 55px;
     width: calc(100% - 55px);
@@ -19,7 +17,6 @@
     height: 55px;
     border-top-right-radius: 2px;
     border-bottom-right-radius: 2px;
-    position: relative;
     border: none;
     background: #f5c518;
     display: flex;
@@ -72,12 +69,8 @@
         background-size: cover;
         background-position: top;
     }
-   .user_input{
-    width: 82vw;
-   }
 
   }
-
  
   @media screen and (max-width: 383px) {
    
@@ -91,10 +84,4 @@
         height: 550px;
         
     }
-
-
-  
- 
-
-
   }

@@ -2,6 +2,7 @@ import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
 import WatchListPreview from '../../cmps/WatchListPreview/WatchListPreview'
 import movieService from '../../services/movieService'
+import './WatchList.css'
 
 const WatchList = ({ watchList, baseUrl, displaySizeCard, setAddWatchList,
     setDeleteWatchList, loadWatchList, setConfigForFetch, displaySizeWlBg }) => {
@@ -33,7 +34,7 @@ const WatchList = ({ watchList, baseUrl, displaySizeCard, setAddWatchList,
                 :
                 <div>
 
-                    <h4 style={{ marginTop: '75px', textAlign: 'center' }}>Your watchlist is empty</h4>
+                    <h4 className="empty_wl" >Your watchlist is empty</h4>
                 </div>
 
             }

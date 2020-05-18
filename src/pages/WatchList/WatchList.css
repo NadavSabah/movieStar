@@ -1,0 +1,11 @@
+.empty_wl{
+    margin-top: 15vh;
+     text-align: center; 
+     font-size:1.25em
+}
+
+@media screen and  (max-width:600px){
+    .empty_wl{
+        font-size:1em
+    }
+}
