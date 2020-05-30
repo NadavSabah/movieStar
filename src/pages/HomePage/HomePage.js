@@ -4,8 +4,6 @@ import './HomePage.css';
 import UserInput from '../../cmps/UserInput/UserInput'
 import MovieList from '../../cmps/MovieList/MovieList'
 import movieService from '../../services/movieService';
-import addThis from '../../cmps/addthis/adddthis'
-import yellow_star from './../../assets/imgs/star.svg'
 
 
 const API = '5c90c388a02f4e1f5527d7ab55af038f'
@@ -17,18 +15,13 @@ const HomePage = ({ inputResults, setConfigForFetch, setPopularList, popularList
     useEffect(
         () => {
             async function getData() {
-                addThis.start()
-                loadAddThis()
-
                 await setConfigForFetch()
                 await setPopularList()
                 await setUpcomingList()
                 await getLastSearch()
 
                 if (!recentlyViewed.length) loadRecentlyList()
-                setTimeout(() => {
 
-                }, 3000)
             }
             getData()
         }
@@ -39,21 +32,14 @@ const HomePage = ({ inputResults, setConfigForFetch, setPopularList, popularList
     const inputResult = (value) => {
         setUserInput(value)
     }
-    const loadAddThis = () => {
-        return (
-            <div className="share_wrapper">
-                <div className="addthis_inline_share_toolbox"></div>
-            </div>
 
-        )
-    }
 
     return (
         <div>
 
             <UserInput inputResult={inputResult} />
             {inputResults ?
-                <div className="dark_bg">
+                <div>
                     {inputResults ?
                         <MovieList title={'SEARCH RESULT'} list={inputResults} />
                         : null
@@ -67,7 +53,7 @@ const HomePage = ({ inputResults, setConfigForFetch, setPopularList, popularList
             }
             <div className="light">
                 {upcomingList ?
-                    <div className="dark_bg">
+                    <div >
                         <MovieList list={upcomingList} title={'COMING SOON'} />
                     </div>
                     : null
@@ -80,17 +66,7 @@ const HomePage = ({ inputResults, setConfigForFetch, setPopularList, popularList
                     <h3 className='rv_no_history'>No history for now...</h3>
                 </div>
             }
-            <footer className="footer">
 
-
-                <div className="follow_wrapper">
-                    <img className="star_foot" src={yellow_star} />
-                    <p className="share_title">MOVIESTAR APP</p>
-                    <img className="star_foot" src={yellow_star} />
-                </div>
-                {/* <div className="add-this"></div> */}
-                {loadAddThis()}
-            </footer>
 
 
         </div>

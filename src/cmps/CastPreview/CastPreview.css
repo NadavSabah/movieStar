@@ -2,15 +2,16 @@
     margin-right: 15px;
     border-radius: 1px;
     background: #ffffff;
-    height: 305px;
-    max-width: 135px;
+    height: 366px;
     color: black;
     text-align: left;
+    font-size: 1.2em;
+    max-width: 162px;
 }
 .actor_img{
     border-radius: 1pX 1px 0 0;
-    height: 202px;
-    width: 135px;
+    height: 242px;
+    width: 162px;
 
 }
 .actor_name{
@@ -29,13 +30,34 @@
     -webkit-box-orient: vertical;
     text-overflow: ellipsis;
     overflow: hidden;
-
+    
 } 
 .actor_txt_wrapper{
     padding-left: 11px;
 }
+.cast_scroll{
+    position: absolute;
+    width: 258px;
+    height: 366px;
+    background-image: linear-gradient(to right, rgba(1, 1, 1, 1) 0%, #000000 78%, #000000 100%);
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0) 0%, #000000 78%, #000000 100%);
+    right: 0;
+      
+}
 
 @media screen and (max-width: 700px) {
+    .cast_scroll{
+        display: none;
+    }
+    .actor_wrapper{
+        font-size: 1em;
+        height: 305px;
+        max-width: 135px;
+    }
+    .actor_img{
+        height: 202px;
+        width: 135px;
+    }
     .actor_char{
         overflow: hidden;
         text-overflow: ellipsis;

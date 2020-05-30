@@ -1,8 +1,9 @@
 body {
     /* font-family: 'Roboto Condensed', sans-serif; */
-    background-color: #3e3e3e;
+    background-color: #010104;
     color: white;
 }
+
 @font-face {
     font-family: Futura;
     src: local(Futura-Bold),

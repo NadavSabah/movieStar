@@ -5,12 +5,12 @@ export default {
     getPopularList,
     getUpcomingList,
     getCurrMovieData,
-    addToWatchList,
-    DeleteFromWatchList,
     loadWatchList,
     addToRecentlyList,
     loadRecentlyList,
     numToDisplay,
+    handaleWatchList,
+
 
 }
 const API = '5c90c388a02f4e1f5527d7ab55af038f'
@@ -18,7 +18,6 @@ const API = '5c90c388a02f4e1f5527d7ab55af038f'
 async function getInputResults(userInput = null) {
     let res;
     if (!userInput) {
-        console.log('in the if !userInput')
         res = localStorage.getItem('inputResults')
         res = JSON.parse(res)
     }
@@ -80,8 +79,6 @@ async function getUpcomingList() {
         return res
     }
 }
-// https://api.themoviedb.org/3/movie/419704/credits?api_key=5c90c388a02f4e1f5527d7ab55af038f
-
 
 async function getCurrMovieData(movieId) {
     let res = await axios.get(`https://api.themoviedb.org/3/movie/${movieId}?api_key=${API}&language=en-US&append_to_response=videos,recommendations,credits`)
@@ -91,14 +88,37 @@ async function getCurrMovieData(movieId) {
     return res.data
 }
 
+function handaleWatchList(watchList, movie) {
+    var index;
+    let isAdded = true
+    let newWatchList = []
+    let item = watchList.filter((watch, idx) => {
+        if (watch.id === movie.id) index = idx;
+        return watch.id === movie.id
+    })
+    if (item.length) {
+        newWatchList = DeleteFromWatchList(index, watchList)
+        isAdded = false
+        return { newWatchList, isAdded }
+    }
+    else {
+        newWatchList = addToWatchList(movie, watchList)
+        isAdded = true
+        return { newWatchList, isAdded }
+    }
+}
 
 
 function addToWatchList(movie, watchList) {
+    console.log('addfunction')
     watchList.push(movie)
     localStorage.setItem('watchList', JSON.stringify(watchList))
     return watchList
 }
 function DeleteFromWatchList(index, watchList) {
+    console.log('movieService delete from watchList')
+    console.log('index', index)
+    console.log('watchList', watchList)
     watchList.splice(index, 1)
     localStorage.setItem('watchList', JSON.stringify(watchList))
     return watchList
@@ -175,36 +195,4 @@ function numToDisplay(num) {
 }
 
 
-
-// async function getGenresByName(genresIds) {
-//     let genresToRender = [];
-//     const allGenres = await getGenresList()
-//     console.log('allGenres',allGenres)
-//     genresIds.forEach(id => {
-//         let genreToRender = allGenres.find(genre => genre.id === id)
-//         console.log('genreToRender',genreToRender)
-//         if (genreToRender) genresToRender.push(genreToRender)
-//     })
-//     return genresToRender
-// }
-// function getInputResults(userInput){
-    //     fetch(searchUrl(userInput))
-    //     .then(res => res.json())
-    //     .then(data => {
-        //         console.log('data by search is ', data.results)
-        //         // setImgsUrl(data.results)
-        //         let res = data.results
-        //         return res
-
-        //     })
-
-        // }
-
-
-        //  const fetchUpcomingList = () => `https://api.themoviedb.org/3/movie/upcoming?api_key=${API}&language=en-US&page=1`
-        // const getUpcomingList = () => {
-            //     fetch(fetchUpcomingList())
-            //         .then(res => res.json())
-            //         .then(data => setUpcomingImgs(data.results))
-            // }
 

@@ -3,8 +3,8 @@ import { connect } from 'react-redux'
 import movieService from '../../services/movieService'
 import { Link } from 'react-router-dom'
 import './WatchListPreview.css'
-import img from '../../assets/imgs/remove.svg'
-import img1 from '../../assets/imgs/filled_remove.svg'
+import remove from '../../assets/imgs/remove.svg'
+import remove_fill from '../../assets/imgs/filled_remove.svg'
 
 const WatchListPreview = ({ imgUrl, data, setCurrMovie, watchList, setDeleteWatchList }) => {
 
@@ -12,17 +12,18 @@ const WatchListPreview = ({ imgUrl, data, setCurrMovie, watchList, setDeleteWatc
         setCurrMovie(data.id)
     }
     const deleteFavorite = () => {
-        const index = watchList.findIndex(watch => {
-            return watch.id === data.id
-        })
-        setDeleteWatchList(index, watchList)
-        window.location.reload()
+        let movieToDelete = document.getElementById(`${data.id}`)
+        setDeleteWatchList(watchList, data)
+        movieToDelete.style.opacity = "0"
+        setTimeout(() => {
+            movieToDelete.style.display = "none"
+        }, 500)
         return false
 
     }
     return (
 
-        <div className={'wl_container'} onClick={onSetCurrMovie}>
+        <div id={`${data.id}`} className={'wl_container'} onClick={onSetCurrMovie}>
             <Link className="mp_wl_link" to={'/' + data.id}>
 
                 <div className="wl_content">
@@ -36,8 +37,8 @@ const WatchListPreview = ({ imgUrl, data, setCurrMovie, watchList, setDeleteWatc
             </Link>
 
             <a onClick={deleteFavorite} className='romove_container'>
-                <img className="wl_remove" src={img} />
-                <img className="wl_fremove" src={img1} />
+                <img className="wl_remove" src={remove} />
+                <img className="wl_fremove" src={remove_fill} />
             </a>
         </div>
 
@@ -51,9 +52,9 @@ const mapDispatchToProps = dispatch => {
             let res = await movieService.getCurrMovieData(movieId)
             dispatch({ type: 'SET_CURR_MOVIE', data: res })
         },
-        setDeleteWatchList: (index, watchList) => {
-            const updatedWatchList = movieService.DeleteFromWatchList(index, watchList)
-            dispatch({ type: 'SET_DELETE_WATCHLIST', data: updatedWatchList })
+        setDeleteWatchList: (watchList, movie) => {
+            const updatedWatchList = movieService.handaleWatchList(watchList, movie)
+            dispatch({ type: 'SET_DELETE_WATCHLIST', data: updatedWatchList.newWatchList })
         }
     }
 }

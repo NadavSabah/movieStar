@@ -1,9 +1,13 @@
-.movieDetails_container {
-    color: white;
-    background-color: #1e1e1e;
-}
 
+.html5-video-player{
+    direction:ltr;
+}
 .img_bg_wrapper{
+    height: 90vh;
+    margin-top: 60px;
+    background-repeat: no-repeat;
+    background-position: 0 10%;
+    background-size: cover;
     background-color: black;
     position: relative;
 }
@@ -14,7 +18,7 @@
 
 
 .movie_title {
-    font-size: 1.5em;
+    font-size: 3vw;
     padding-bottom: 6px;
     margin-bottom: 1px;
     margin-top: 0;
@@ -52,10 +56,12 @@
 
 .trailers_container {
     display: flex;
-    justify-content: center;
+    flex-direction: column;
     flex-wrap: wrap;
 }
-
+.video_wrapper{
+    padding-left: 5vw;
+}
 .rec_container {
     display: flex;
     overflow-x: scroll;
@@ -133,7 +139,7 @@ font-size: 1.1em;
     .img_bg{
     background-color: black;
     margin-top: 65px;
-    height: 50vw;
+    height: 40vw;
     width: 100%;
     object-fit: cover;
     }
@@ -144,22 +150,36 @@ font-size: 1.1em;
         bottom: 0;
         padding-left: 5vw;
         display: flex;
-        flex-direction: column;
-        flex-wrap: wrap;
-
+        justify-content: space-between;
     }
+    .leftside_movie{
+        display: flex;
+    flex-direction: column;
+    }
+    .add_to_wl{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        width: 224px;
+    }
+    .wl_tag{
+        height:5vh;
+        cursor:pointer
+    }
+  
     .md_youtube{
-        width: 90%;
     border: none;
-    height: auto;
+    height:200px;
     margin-bottom: 15px;
     border-radius: 2px;
+    width: 27%;
+    margin-right: 3vw;
     }
- 
- 
 
     .ml_title{
-        padding: 13px;
+    padding: 13px;
     margin-bottom: 0;
     }
 
@@ -172,12 +192,15 @@ font-size: 1.1em;
         -webkit-box-orient: vertical;
         text-overflow: ellipsis;
         overflow: hidden;
+        font-size: 1.2em;
     }
     
     .info_container {
-        font-size: 0.9em;
         line-height: 1.56;
         font-weight: 500;
+        width: 113%;
+        display: flex;
+        flex-wrap: wrap;
     }
    
     .languages{
@@ -186,18 +209,50 @@ font-size: 1.1em;
     .top_details{
         display: flex;
     flex-direction: row;
+    flex-wrap: wrap;
     }
     .html5-video-player{
     direction: ltr;
     }
-    
+
     
 
-@media screen and (max-width: 365px) {
+@media screen and (max-width: 900px) {
+    .img_bg_wrapper{
+        height: 64vh;
+        background-position:62%;
+        }
+ }
+@media screen and (max-width: 750px) {
+    .wl_tag{
+        height:4vh;
+    }
+
+    .md_youtube{
+        width: 90%;
+        height:200px;
+        margin-right: 0;
+    }
+    .img_bg_wrapper{
+        height: 64vh;
+        background-position:62%;
+    }
+}
+@media screen and (max-width: 450px) {
     .info_container{
         font-size: 4vw;
     
     }
+    .wl_tag{
+        height:3vh;
+    }
+    .add_to_wl{
+    justify-content: unset;
+    position: relative;
+    top: 14px;
+    }
+
+  
 }
 @media screen and (max-width: 335px) {
    .side_data_container{
@@ -205,8 +260,11 @@ font-size: 1.1em;
    }
 }
 @media screen and (max-width: 600px) {
+    .add_remove_txt{
+        display: none;
+    }
     .movie_title{
-        font-size: 1em;
+        font-size: 1.2em;
         width:95%;
     }
     .img_bg{
@@ -215,5 +273,12 @@ font-size: 1.1em;
     .splitLines{
         flex-direction: column;
     }
+    .video_wrapper{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 0;
+        width: 100%;
+        }
    
 }

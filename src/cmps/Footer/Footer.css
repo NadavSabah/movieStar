@@ -1,0 +1,32 @@
+.footer{
+    background: #222222;
+    position: relative;
+;
+}
+.follow_wrapper{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.star_foot{
+    height: 3.5vh;
+}
+.share_title{
+    text-align: center;
+    
+    padding: 10px;
+    color: #f5c518;
+    letter-spacing: -0.14px;
+    font-weight: bold;
+    margin: 0;
+    padding: 5vh 3vh;
+    font-size: 5vh;
+}
+.share_wrapper{
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #222222;
+    padding-bottom: 5vh;
+}

@@ -12,17 +12,16 @@
     font-size: 1.2em;
     width: 100%;   
   }
-  .main_nav_container{
-    /* position: relative; */
-  }
+
   .yellow_nav{
+    display: flex;
     position: fixed;
-    height: 85px;
+    height: 55px;
     justify-content: center;
     flex-direction: column;
     align-items: center;
     width: 100%;
-    z-index:1
+    z-index:1;
   }
   
   .black_star{
@@ -43,7 +42,7 @@
     text-align: left;
     position: fixed;
     top: 3.5vh; 
-    right: 0;
+    right: 10.5vh;
     transition: top 0.3s;
 }
 .main_nav_item {
@@ -52,37 +51,49 @@
   padding-bottom: 10vw;
 }
 .logo_img {
-  height: 3vh;
+  height: 2.5vh;
+  min-height: 13px;
   position: absolute;
-  left: 3.5vh;
-  top: 3.5vh;
+  left: 10.5vh;
+  top: 21px;
   z-index: 1;
 }
    
 
 .item_name {
   text-decoration: none;
-  color: white;
   font-weight: bold;
-  font-size: 1.2em;
-  padding-right: 3vh;  
+  font-size: 1.35em;
+  padding-right: 9vh;  
 }
 
 
 .main_nav_items {
-    margin: 0;
+    right: 6vw;
+    z-index: 1;
+    margin: -5px;
     padding: 0;
     list-style: none;
     position: absolute;
+    top:19px;
     display: block;
 }
-
-
 .menu_btn{
   display: none;
 }
+@media screen and (max-width: 750px) {
+  .item_name {
+    padding-right: 3vw;
+}
+.main_nav_items{
+   right:2vw;
+}
+}
 
 @media screen and (max-width: 600px) {
+  .main_nav {
+    right: 0;
+}
  
   .yellow_nav{
     height:55px;
@@ -92,6 +103,7 @@
   }
   .item_name{
     font-size: 1.5em;
+    padding-right:0;
   }
 
   .menu_btn{
@@ -113,7 +125,6 @@
     .logo_img{
         width: 30vw;
         height: 3vh;
-        top: 4.5vw;
         left: 4.5vw;
     }
     
@@ -121,7 +132,7 @@
       display: block;
       position: absolute;
       right: 4.5vw;
-      top: 4.5vw;
+      top: 19px;
       height: 3vh;
       cursor: pointer;
       z-index: 1;
@@ -129,8 +140,8 @@
 
     .width_nav{
       display: flex;
-      width: 100%;
-      height: 105vh;
+      width: 102%;
+      height: 110vh;
       background: rgb(0, 0, 0,0.9);
       justify-content: center;
       flex-direction: column;
@@ -150,9 +161,17 @@
 }
 
 
+@media screen and (max-width: 450px) {
+    .logo_img {
+      width: 38vw;
+        }
+        
+    
+}
 @media screen and (max-width: 383px) {
     .logo_img {
       width: 42vw;
+      min-width: 130px;
         }
         
     

@@ -21,13 +21,13 @@ const MoviePreview = ({ imgUrl, data, setCurrMovie, recentlylist, watchList, han
 
     }
     const checkMovieInWatchList = (movie, invokeWatchList = null) => {
+
         if (invokeWatchList) handaleWatchList(movie)
         const index = watchList.findIndex(watch => {
             return watch.id === movie.id
         })
         if (index !== -1) {
             setIsInWatchList(true)
-
         }
         else {
             setIsInWatchList(false)

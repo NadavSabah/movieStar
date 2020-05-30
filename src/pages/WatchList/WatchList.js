@@ -17,7 +17,7 @@ const WatchList = ({ watchList, baseUrl, displaySizeCard, setAddWatchList,
     }, [])
 
     return (
-        <div>
+        <div className="wl_page">
             {watchList.length
                 ? watchList.map((movieData, idx) =>
                     <div key={idx} >

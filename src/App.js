@@ -10,6 +10,7 @@ import Moviedetails from './pages/MovieDetails/MovieDetails';
 import check from './assets/imgs/check.svg'
 import { connect } from 'react-redux'
 import NavBar from './cmps/NavBar/NavBar'
+import Footer from './cmps/Footer/Footer'
 
 function App({ msg }) {
 
@@ -40,7 +41,7 @@ function App({ msg }) {
         <Route path="/AboutUs" component={AboutUs} />
         <Route path="/:id" component={Moviedetails} />
       </Switch>
-
+      <Footer />
     </Router>
   );
 }

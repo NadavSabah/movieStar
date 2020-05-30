@@ -6,73 +6,27 @@ import movieService from '../../services/movieService'
 import MoviePreview from '../MoviePreview/MoviePreview'
 
 const MovieList = ({ list, title, baseUrl, displaySizeCard, watchList, setAddWatchList, setDeleteWatchList, recentlyViewed, setIsSucMsg }) => {
-    const [showWindow, setShowWindow] = useState(false)
-    const [noteId, setNoteId] = useState(null)
-
-
-
-    const closeNote = () => {
-        console.log('closing')
-        if (showWindow === true) setShowWindow(false)
-    }
-    const handleOptPicked = (e, movie) => {
-        console.log('e.currentTarget.innerHTM', e.currentTarget.innerHTML)
-        e.stopPropagation()
-        if (e.currentTarget.innerHTML === 'Add to watchlist') {
-            setShowWindow(!showWindow)
-            handaleWatchList(movie)
-        }
-
-    }
-
-    const handleNoteOpen = (e, { id }) => {
-
-        console.log('the id is ', id)
-        if (noteId) {
-            if (id !== noteId) {
-                console.log('in the if')
-                setTimeout(() => {
-
-                    setShowWindow(true)
-                }, 0)
-
-            }
-        }
-        setNoteId(id)
-
-        setShowWindow(!showWindow)
-
-    }
-
-
 
     // remove and add to wathlist
     const handaleWatchList = (movie) => {
-
-
-        const index = watchList.findIndex(watch => {
-            return watch.id === movie.id
-        })
-        if (index !== -1) {
-
-            setDeleteWatchList(index, watchList)
-            setIsSucMsg({ isShow: true, content: 'remove from' })
-            setTimeout(() => {
-                setIsSucMsg(false)
-
-            }, 3000)
-        }
-        else {
-            setAddWatchList(movie, watchList)
+        let { newWatchList, isAdded } = movieService.handaleWatchList(watchList, movie)
+        if (isAdded) {
+            setAddWatchList(newWatchList)
             setIsSucMsg({ isShow: true, content: 'added to' })
             setTimeout(() => {
                 setIsSucMsg(false)
-
+            }, 3000)
+        }
+        else {
+            setDeleteWatchList(newWatchList)
+            setIsSucMsg({ isShow: true, content: 'remove from' })
+            setTimeout(() => {
+                setIsSucMsg(false)
             }, 3000)
         }
     }
 
-    return (<div onClick={closeNote} className="list_container">
+    return (<div className="list_container">
         {title ?
             <h2 className="sub_title">{title}</h2>
             : null
@@ -88,9 +42,8 @@ const MovieList = ({ list, title, baseUrl, displaySizeCard, watchList, setAddWat
 
                             {movieData.poster_path ?
                                 <>
-                                    <MoviePreview handaleWatchList={handaleWatchList}
+                                    <MoviePreview
                                         watchList={watchList}
-                                        handleNoteOpen={handleNoteOpen}
                                         handaleWatchList={handaleWatchList}
                                         recentlylist={recentlyViewed}
                                         imgUrl={`${baseUrl}${displaySizeCard}${movieData.poster_path}`} data={movieData} />
@@ -116,12 +69,12 @@ const mapStateToProps = state => {
 }
 const mapDispatchToProps = dispatch => {
     return {
-        setAddWatchList: (movie, watchList) => {
-            const updatedWatchList = movieService.addToWatchList(movie, watchList)
+        setAddWatchList: (updatedWatchList) => {
+            // const updatedWatchList = movieService.addToWatchList(movie, watchList)
             dispatch({ type: 'SET_ADD_WATCHLIST', data: updatedWatchList })
         },
-        setDeleteWatchList: (index, watchList) => {
-            const updatedWatchList = movieService.DeleteFromWatchList(index, watchList)
+        setDeleteWatchList: (updatedWatchList) => {
+            // const updatedWatchList = movieService.DeleteFromWatchList(index, watchList)
             dispatch({ type: 'SET_DELETE_WATCHLIST', data: updatedWatchList })
         },
         setIsSucMsg: ({ isShow, content }) => {
