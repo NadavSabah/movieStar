@@ -10,25 +10,20 @@ import empty_rec from './../../assets/imgs/rectangle_md.svg'
 import filled_rec from './../../assets/imgs/Rectangle_filled.svg'
 // import rightArrow
 
-const MovieDetails = ({ history, movie, baseUrl, displaySizeBg, displaySizeCard, setCurrMovie, setConfigForFetch,
+const MovieDetails = ({ history, movie, baseUrl, displaySizeBg, setCurrMovie, setConfigForFetch,
     recs, recentlyViewed, addToRecentlyList, setAddWatchList, setDeleteWatchList, setIsSucMsg, watchList }) => {
     let [isInWatchList, setIsInWatchList] = useState(false)
     let [titlefontSize, setTitleFontSize] = useState('1.5em')
     let [manyGenres, setManyGenres] = useState(false)
     useEffect(() => {
-
         setTimeout(() => {
-
             async function getData() {
                 await setConfigForFetch()
                 await setCurrMovie(movie, history, recentlyViewed)
-
             }
             if (!movie) {
                 getData()
             }
-
-
         }, 500)
     }, [])
     useEffect(() => {
@@ -91,19 +86,14 @@ const MovieDetails = ({ history, movie, baseUrl, displaySizeBg, displaySizeCard,
     }
 
     const checkMovieInWatchList = (movie, invokeWatchList = null) => {
-        console.log('checkMovieInWatchList function detailsFiles ', movie)
         if (invokeWatchList) handaleWatchList(movie)
-        console.log('watchlist is:', watchList)
-        console.log('movie is', movie)
         const index = watchList.findIndex(watch => {
             return watch.id === movie.id
         })
         if (index !== -1) {
-            console.log('index is(in the if):', index)
             setIsInWatchList(true)
         }
         else {
-            console.log('index is(in the else):', index)
             setIsInWatchList(false)
         }
     }
@@ -230,7 +220,6 @@ const mapStateToProps = state => {
     return {
         movie: state.currMovie,
         baseUrl: state.baseUrl,
-        displaySizeCard: state.displaySizeCard,
         displaySizeBg: state.displaySizeBg,
         recentlyViewed: state.recentlyViewed,
         watchList: state.watchList

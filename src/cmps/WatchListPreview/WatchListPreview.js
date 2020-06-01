@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { connect } from 'react-redux'
 import movieService from '../../services/movieService'
 import { Link } from 'react-router-dom'
@@ -6,41 +6,36 @@ import './WatchListPreview.css'
 import remove from '../../assets/imgs/remove.svg'
 import remove_fill from '../../assets/imgs/filled_remove.svg'
 
-const WatchListPreview = ({ imgUrl, data, setCurrMovie, watchList, setDeleteWatchList }) => {
-
+const WatchListPreview = ({ imgUrl, data, setCurrMovie, watchList, setDeleteWatchList, deleteFavorite }) => {
     const onSetCurrMovie = () => {
         setCurrMovie(data.id)
     }
-    const deleteFavorite = () => {
-        let movieToDelete = document.getElementById(`${data.id}`)
-        setDeleteWatchList(watchList, data)
-        movieToDelete.style.opacity = "0"
-        setTimeout(() => {
-            movieToDelete.style.display = "none"
-        }, 500)
-        return false
 
-    }
     return (
+        <>
+            {watchList ?
+                <div id={`${data.id}`} className={'wl_container'} onClick={onSetCurrMovie}>
+                    <Link className="mp_wl_link" to={'/' + data.id}>
 
-        <div id={`${data.id}`} className={'wl_container'} onClick={onSetCurrMovie}>
-            <Link className="mp_wl_link" to={'/' + data.id}>
+                        <div className="wl_content">
 
-                <div className="wl_content">
+                            <h3 className='wl_title'>{data.title}</h3>
+                            <div className='wl_rate'>{data.vote_average}</div>
+                            <div className='wl_date'>{data.release_date}</div>
+                            <div className='wl_overview'>{data.overview}</div>
+                        </div>
+                        <img className="wl_movie_img" src={imgUrl} />
+                    </Link>
 
-                    <h3 className='wl_title'>{data.title}</h3>
-                    <div className='wl_rate'>{data.vote_average}</div>
-                    <div className='wl_date'>{data.release_date}</div>
-                    <div className='wl_overview'>{data.overview}</div>
+                    <a onClick={() => deleteFavorite(data)} className='romove_container'>
+                        <img className="wl_remove" src={remove} />
+                        <img className="wl_fremove" src={remove_fill} />
+                    </a>
                 </div>
-                <img className="wl_movie_img" src={imgUrl} />
-            </Link>
+                : null
 
-            <a onClick={deleteFavorite} className='romove_container'>
-                <img className="wl_remove" src={remove} />
-                <img className="wl_fremove" src={remove_fill} />
-            </a>
-        </div>
+            }
+        </>
 
     )
 }

@@ -3,7 +3,7 @@
 
 }
 .wl_container{
-    transition: opacity display, 0.5s;
+    transition: opacity  0.5s;
     opacity: 1;
     background-color: white;
     position: relative;

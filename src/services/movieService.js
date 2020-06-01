@@ -38,7 +38,6 @@ async function getHttpReqConfig() {
     let displaySizeWlBg;
     if (localStorage.getItem('generalConfig') === null) {
         let res = await axios.get(`https://api.themoviedb.org/3/configuration?api_key=${API}`)
-        console.log('getHttpReqConfig function:', res)
         displaySizeCard = res.data.images.poster_sizes[2]
         displaySizeBg = res.data.images.poster_sizes[6]
         displaySizeWlBg = res.data.images.poster_sizes[5]
@@ -82,7 +81,6 @@ async function getUpcomingList() {
 
 async function getCurrMovieData(movieId) {
     let res = await axios.get(`https://api.themoviedb.org/3/movie/${movieId}?api_key=${API}&language=en-US&append_to_response=videos,recommendations,credits`)
-    console.log('res is (with append to response, did you see also recommendations?', res.data)
     localStorage.setItem('currMovie', JSON.stringify(res.data))
 
     return res.data
@@ -110,15 +108,11 @@ function handaleWatchList(watchList, movie) {
 
 
 function addToWatchList(movie, watchList) {
-    console.log('addfunction')
     watchList.push(movie)
     localStorage.setItem('watchList', JSON.stringify(watchList))
     return watchList
 }
 function DeleteFromWatchList(index, watchList) {
-    console.log('movieService delete from watchList')
-    console.log('index', index)
-    console.log('watchList', watchList)
     watchList.splice(index, 1)
     localStorage.setItem('watchList', JSON.stringify(watchList))
     return watchList

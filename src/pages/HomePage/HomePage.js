@@ -27,20 +27,17 @@ const HomePage = ({ inputResults, setConfigForFetch, setPopularList, popularList
         }
         , [])
 
-
-
     const inputResult = (value) => {
         setUserInput(value)
     }
-
 
     return (
         <div>
 
             <UserInput inputResult={inputResult} />
-            {inputResults ?
+            {userInput ?
                 <div>
-                    {inputResults ?
+                    {userInput ?
                         <MovieList title={'SEARCH RESULT'} list={inputResults} />
                         : null
                     }

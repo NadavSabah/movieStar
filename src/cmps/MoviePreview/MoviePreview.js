@@ -13,7 +13,7 @@ const MoviePreview = ({ imgUrl, data, setCurrMovie, recentlylist, watchList, han
     const [isInWatchList, setIsInWatchList] = useState(false)
 
     useEffect(() => {
-        checkMovieInWatchList(data)
+        if (watchList.length) checkMovieInWatchList(data)
     }, [])
 
     const onSetCurrMovie = () => {
