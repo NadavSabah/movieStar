@@ -1,13 +1,17 @@
+
+.wl_page{
+    min-height: calc(100vh - 16.5rem);
+    margin-top: 3.5rem;
+}
 .empty_wl{
-    margin-top: 15vh;
-     text-align: center; 
-     font-size:1.25em;
-     height:53vh;
-     font-weight: bold;
+    text-align: center;
+    font-size: 1.25rem;
+    font-weight: bold;
+    padding-top: 9vh;
 }
 
 @media screen and  (max-width:600px){
     .empty_wl{
-        font-size:1em
+        font-size:1rem
     }
 }

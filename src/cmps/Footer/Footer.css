@@ -1,6 +1,7 @@
 .footer{
     background: #222222;
     position: relative;
+    height: 13rem;
 ;
 }
 .follow_wrapper{
@@ -28,5 +29,4 @@
     justify-content: center;
     align-items: center;
     background: #222222;
-    padding-bottom: 5vh;
 }

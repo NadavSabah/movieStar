@@ -1,22 +1,17 @@
 .navbar {
-    width: 100%;
-    display: block;
-    z-index: 1;
+  width: 100%;
+  display: block;
+  z-index: 1;
   transition: top 0.3s;
   position: fixed;
   top:0;    
 } 
-.navbar a {
-    display: flex;
-    justify-content: center; 
-    font-size: 1.2em;
-    width: 100%;   
-  }
+
 
   .yellow_nav{
     display: flex;
     position: fixed;
-    height: 55px;
+    height:3.45rem;
     justify-content: center;
     flex-direction: column;
     align-items: center;
@@ -146,11 +141,11 @@
       justify-content: center;
       flex-direction: column;
       align-items: center;
-      right: 0;
+      left: 0;
+      top: 0;
       z-index: 2;
       position: fixed;
       list-style: none;
-      top: -5vh;
     }
     #menu{
       transition: opacity 500ms;
