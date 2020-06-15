@@ -30,7 +30,7 @@ const Footer = () => {
 
             <div className="follow_wrapper">
                 <img className="star_foot" src={yellow_star} />
-                <p className="share_title">FOLLOW US</p>
+                <p className="share_title futura">FOLLOW US</p>
                 <img className="star_foot" src={yellow_star} />
             </div>
             {/* <div className="add-this"></div> */}

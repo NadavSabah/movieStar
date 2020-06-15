@@ -109,7 +109,7 @@ const MovieDetails = ({ history, movie, baseUrl, displaySizeBg, setCurrMovie, se
                             <div className='main_details'>
                                 <div className="leftside__movie">
                                     <div className="title_wrapper">
-                                        <h2 className='movie_title'>{movie.title.toUpperCase()}</h2>
+                                        <h2 className='movie_title futura'>{movie.title.toUpperCase()}</h2>
                                     </div>
 
                                     <div style={{ fontSize: manyGenres ? manyGenres : "" }} className="info_container">
@@ -159,15 +159,15 @@ const MovieDetails = ({ history, movie, baseUrl, displaySizeBg, setCurrMovie, se
                         <div className='side_data_container'>
 
                             <div className="sub_data" title={`base on ${movie.vote_count} votes  `}><span className="sub_tit">Score</span><div className="desc_tit">{movie.vote_average} <img className="img_star" src={star} /></div></div>
-                            <div className="sub_data"><span className="sub_tit">Status</span><div className="desc_tit">{movie.status.toUpperCase()}</div></div>
-                            <div className="sub_data"><span className="sub_tit">Budget</span><div className="desc_tit">{numberWithCommas(movie.budget)}</div></div>
-                            <div className="sub_data"><span className="sub_tit">Reveune</span><div className="desc_tit">{numberWithCommas(movie.revenue)}</div></div>
+                            <div className="sub_data"><span className="sub_tit">Status</span><div className="desc_tit futura">{movie.status.toUpperCase()}</div></div>
+                            <div className="sub_data"><span className="sub_tit">Budget</span><div className="desc_tit futura">{numberWithCommas(movie.budget)}</div></div>
+                            <div className="sub_data"><span className="sub_tit">Reveune</span><div className="desc_tit futura">{numberWithCommas(movie.revenue)}</div></div>
 
                         </div>
 
                         <div className="overview_wrapper">
 
-                            <h2 className="sub_title" style={{ margin: 0 }}>SUMMARY</h2>
+                            <h2 className="sub_title futura" style={{ margin: 0 }}>SUMMARY</h2>
                             <div className='overview_txt'>
                                 <h4 className="movie_tagline">{movie.tagline}</h4>
                                 <p style={{ margin: 0 }}> {movie.overview}</p>
@@ -176,7 +176,7 @@ const MovieDetails = ({ history, movie, baseUrl, displaySizeBg, setCurrMovie, se
                     </div>
                     {movie.videos.results ?
                         <div className="trailers_container" >
-                            <h2 className="sub_title">VIDEOS</h2>.
+                            <h2 className="sub_title futura">VIDEOS</h2>.
                             <div className="video_wrapper">
 
                                 {movie.videos.results.map((trailer, idx) =>
@@ -190,7 +190,7 @@ const MovieDetails = ({ history, movie, baseUrl, displaySizeBg, setCurrMovie, se
                         </div>
                         : <p>no trailer available</p>
                     }
-                    <h2 style={{ paddingTop: "2vh" }} className="sub_title">MOVIE CAST</h2>
+                    <h2 style={{ paddingTop: "2vh" }} className="sub_title futura">MOVIE CAST</h2>
                     {movie.credits.cast ?
                         <div className="cast_container">
                             <div className="cast_scroll"></div>

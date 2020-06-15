@@ -28,7 +28,7 @@ const MovieList = ({ list, title, baseUrl, displaySizeCard, watchList, setAddWat
 
     return (<div className="list_container">
         {title ?
-            <h2 className="sub_title">{title}</h2>
+            <h2 className="sub_title futura">{title}</h2>
             : null
         }
         < div className='movies_container'  >

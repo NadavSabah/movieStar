@@ -1,30 +1,17 @@
+
+  @font-face {
+    font-family: 'Futura';
+    src:url('./assets/fonts/futuraBold/Futura\ Extra\ Bold.ttf');
+}
+* {
+    box-sizing: border-box;
+}
 body {
-    /* font-family: 'Roboto Condensed', sans-serif; */
     background-color: #010104;
     color: white;
 }
 
-@font-face {
-    font-family: Futura;
-    src: local(Futura-Bold),
-      url(/path/to/Futura-Bold.woff2) format("woff2"),
-      url(/path/to/Futura-Bold.woff) format("woff"),
-      url(/path/to/Futura-Bold.ttf) format("truetype");
-    font-weight: bold;
-    font-style: normal;
-    font-stretch: normal;
-  }
-  @font-face {
-    font-family: HelveticaNeue;
-    src: local(HelveticaNeue-Medium),
-      url(/path/to/HelveticaNeue-Medium.woff2) format("woff2"),
-      url(/path/to/HelveticaNeue-Medium.woff) format("woff"),
-      url(/path/to/HelveticaNeue-Medium.ttf) format("truetype");
-    /* font-weight: 500;
-    font-style: normal;
-    font-stretch: normal; */
-  }
-a{
+a {
     text-decoration: none;
 }
 
@@ -32,9 +19,9 @@ h1 {
     margin: 0
 }
 
-* {
-    box-sizing: border-box;
-}
+.futura{
+    font-family: 'Futura';
+} 
 .dark_txt{
 color:black
 }

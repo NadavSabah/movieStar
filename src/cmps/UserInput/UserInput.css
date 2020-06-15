@@ -1,4 +1,6 @@
 
+  
+    
     .container_form {
         padding: 25px 5vw;
     }
@@ -32,6 +34,7 @@
     font-size: 2em;
     width: 520px;
     color:#f4f4f4;
+
 }
 .input_wrapper{
     height:100vh;
@@ -49,10 +52,9 @@
 .input_field{
     display: flex;
 }
-/* .bg_txt_wrapper{
-    width: 100%;
-    padding-left: 5vw;
-} */
+.container_form input {
+    font:inherit;
+}
 @media screen and (max-width: 1000px) {
 .input_wrapper{
     height:500px

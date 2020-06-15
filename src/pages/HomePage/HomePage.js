@@ -59,7 +59,7 @@ const HomePage = ({ inputResults, setConfigForFetch, setPopularList, popularList
             {recentlyViewed.length ?
                 <MovieList list={recentlyViewed} title={'RECENTLY VIEWED'} />
                 : <div>
-                    <h1 className='sub_title'>Recently Viewed</h1>
+                    <h1 className='sub_title futura'>Recently Viewed</h1>
                     <h3 className='rv_no_history'>No history for now...</h3>
                 </div>
             }

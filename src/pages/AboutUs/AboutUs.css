@@ -2,7 +2,7 @@
 .about_page{
     text-align: left;
     position: relative;
-    height: 71vh;
+    height: calc(100vh   -  13rem);
     width: 100vw;
 }
 
@@ -32,10 +32,7 @@
 
 }
 @media screen and (max-width: 750px) {
-    .about_page{
-        height: 85vh;
-     
-    }
+
     .about_title{
         padding-top: 60px;
       ;

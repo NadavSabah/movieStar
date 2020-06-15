@@ -36,6 +36,7 @@
     display: flex;
     flex-direction: column;
     padding-right: 6vw;
+    justify-content: space-between;
 }
 
 .imgs_container {
@@ -102,7 +103,7 @@ align-items: center;
 color:white;   
 justify-content: space-between;
 width: 95%; 
-font-size: 1.1em;
+font-size: 1.25rem;
 }
 
 
@@ -240,6 +241,7 @@ font-size: 1.1em;
 }
 @media screen and (max-width: 450px) {
     .info_container{
+        width:145%;
         font-size: 4vw;
     
     }
@@ -264,7 +266,7 @@ font-size: 1.1em;
         display: none;
     }
     .movie_title{
-        font-size: 1.2em;
+        font-size: 1.4rem;
         width:95%;
     }
     .img_bg{

@@ -29,7 +29,7 @@ const UserInput = ({ inputResult, OnHandleSubmit }) => {
                 </label>
             </form>
             <div className="bg_txt_wrapper">
-                <div className="bg_img_txt">
+                <div className="bg_img_txt futura">
                     PLENTY OF MOVIES TO
                     DISCOVER, EXPLORE,
                     SHARE AND ENJOY
